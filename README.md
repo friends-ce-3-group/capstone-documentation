@@ -19,9 +19,9 @@ Established in 2023, The GoodGreets Company was set up to bring joy to the heart
 ![Image 1: Website Homepage](image-website-frontend.png)
 Image 1: Website Homepage
 
-### Feature 1: Card Image Upload
+#### Feature 1: Card Image Upload
 [TODO]
-### Feature 2: Scheduled Sending of Card
+#### Feature 2: Scheduled Sending of Card
 [TODO]
 
 ## Solution Architecture
@@ -49,11 +49,11 @@ To implement our architecture, we have logically grouped various infrastructure 
 | https://github.com/friends-ce-3-group/capstone-alarm | CW Alarms, SNS | Slack |
 
 ## SRE Aspect 1: Security
-### Security Groups and Origin Access Control
+#### Security Groups and Origin Access Control
 [TODO]
-### AWS
+#### AWS Captcha
 [TODO]
-### RDS Proxy
+#### RDS Proxy
 [TODO]
 ## SRE Aspect 2: Availability
 [TODO]
