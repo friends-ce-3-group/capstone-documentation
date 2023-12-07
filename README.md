@@ -47,6 +47,10 @@ Image 2: Solution Architecture
 
 - Once a card is created, the ECS task will create a cron job using AWS EventBridge Scheduler. On the scheduled date and time, this schedular will call an AWS Lambda function, passing it the recipient name, email and image path. This information will be used by the lambda function to query into the S3 images bucket to fetch the image and create an email. The email will be passed into AWS SNS and SES to be sent to the recipient.
 
+- Cloudwatch metrics and logging are enabled on all the AWS resources where available. The metrics are exposed into dashboards for trend and realtime monitoring. The dashboarding tools used are AWS Cloudwatch Dashboard and AWS-managed Grafana. Dashboard views are split into sections to cater to the interest of different groups (e.g Management, Developers, Security).
+
+- For realtime alerts, Cloudwatch Alarms are also enabled on the entire infrastructure. Alerts are channelled into AWS SNS topics which sent emails and Slack group alerts. 
+
 ## Repository and Technology Stack
 To implement our architecture, we have logically grouped various infrastructure components into its own code repository. This is to allow decoupling of the infrastructure components to enable unimpeded development of each section of the infrastructure. Each group of infrastructure components could be deployed or teardown without impacting other parts of the infrastructure. (For e.g, The database resource contains data which should persist even though other application resources can be tear-down. Infrastructure which supports image upload is unrelated to the infrastructure related to card delivery, and both can be deployed/teardown separately.)
 
