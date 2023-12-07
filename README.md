@@ -38,9 +38,11 @@ Once the card is scheduled, an automated cron job will be set up to send the car
 Image 2: Solution Architecture
 
 ## Repository and Technology Stack
-To implement our architecture, we have logically grouped various infrastructure components into its own code repository. This is to allow decoupling of the infrastructure components to enable efficient development of each component by various developers. In addition, each group of infrastructure components could be deployed or teardowned without impacting other parts of the infrastructure. 
+To implement our architecture, we have logically grouped various infrastructure components into its own code repository. This is to allow decoupling of the infrastructure components to enable efficient development of each component by various developers. In addition, each group of infrastructure components could be deployed or teardowned without impacting other parts of the infrastructure.
 
 **Github** is the version control system used for our code repository and **Terraform** is the Infrastructure as Code (IaC) tool used to deploy our AWS infrastructure components via **Github Actions**.
+
+In total, there are 12 code repositories used to manage the application infrastructure and code.
 
 | Repository | AWS Stack | Others |
 | ---------- | --------- | --------- |
@@ -73,4 +75,6 @@ To implement our architecture, we have logically grouped various infrastructure 
 ## SRE Aspect 5: Logging
 [TODO]
 ## SRE Aspect 6: Improving Resiliency (AWS Resiliency Hub)
+[TODO]
+## Improvements and Future Enhancements
 [TODO]
