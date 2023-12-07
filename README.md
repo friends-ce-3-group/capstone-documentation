@@ -18,6 +18,7 @@ These project is part of NTU Cloud Infrastructure Engineering (SCTP) Cohort 3 en
 | https://goodgreets.sctp-sandbox.com |
 
 ![Image 1: Website Homepage](image-website-frontend.png)
+
 Image 1: Website Homepage
 
 #### Feature 1: Card Image Upload
@@ -35,14 +36,23 @@ Once the card is scheduled, an automated cron job will be set up to send the car
 
 ## Solution Architecture
 ![Image 2: Solution Architecture](image-solution-architecture.png)
+
 Image 2: Solution Architecture
 
+- When a user accesses the website, the user is served with static website files stored in an AWS S3 bucket. S3 static website hosting is used as a web server. The website will make a JSON API call to get a list of card designs that contains the image source links. These image source links are stored in AWS RDS database. The website will use these image source links to query the S3 bucket to get the images.
+
+- The JSON API calls are fronted by an AWS Application Load Balancer (ALB) which contains a target group consisting of AWS ECS tasks. These ECS tasks holds the logic for the website's Card CRUD services (i.e. Create, Read, Update, Delete cards). The Card CRUD services interacts with an AWS RDS MySql Database via a RDS Proxy to get data.
+
+- On the website, the user could upload an image as the card design. When this function is called, a PUT request is issued into AWS API Gateway which proxies the S3 images bucket. AWS EventBridge is enabled on this S3 bucket to issue event notifications (i.e.S3 Object Created event). An ECS ephemeral task detects this event and resizes this image into a thumbnail. Thumbnails are used in the card catalog images, while  actual images are used for the card sent to the recipient.
+
 ## Repository and Technology Stack
-To implement our architecture, we have logically grouped various infrastructure components into its own code repository. This is to allow decoupling of the infrastructure components to enable efficient development of each component by various developers. In addition, each group of infrastructure components could be deployed or teardowned without impacting other parts of the infrastructure.
+To implement our architecture, we have logically grouped various infrastructure components into its own code repository. This is to allow decoupling of the infrastructure components to enable unimpeded development of each section of the infrastructure. Each group of infrastructure components could be deployed or teardown without impacting other parts of the infrastructure. (For e.g, The database resource contains data which should persist even though other application resources can be tear-down. Infrastructure which supports image upload is unrelated to the infrastructure related to card delivery, and both can be deployed/teardown separately.)
+
+In total, there are 12 code repositories used to manage the application infrastructure and code.
 
 **Github** is the version control system used for our code repository and **Terraform** is the Infrastructure as Code (IaC) tool used to deploy our AWS infrastructure components via **Github Actions**.
 
-In total, there are 12 code repositories used to manage the application infrastructure and code.
+
 
 | Repository | AWS Stack | Others |
 | ---------- | --------- | --------- |
@@ -77,4 +87,8 @@ In total, there are 12 code repositories used to manage the application infrastr
 ## SRE Aspect 6: Improving Resiliency (AWS Resiliency Hub)
 [TODO]
 ## Future Improvements and Enhancements
+[TODO]
+## Appendix
+[TODO]
+#### Links for Presentation
 [TODO]
