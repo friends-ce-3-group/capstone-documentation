@@ -12,7 +12,7 @@ Established in 2023, The GoodGreets Company was set up to bring joy to the heart
 ## Topic
 These project is part of NTU Cloud Infrastructure Engineering (SCTP) Cohort 3 end-of-program capstone project. The selected topic is on Site Reliability Engineering (SRE). In this project, we showcase a monitoring solution on our GoodGreets website. Aside from the application, we also showcase monitoring dashboards, metrices, alarms and application logging that represent SRE.
 
-## Website and Core Features
+## Website and Features
 | URL |
 | ----------- |
 | https://goodgreets.sctp-sandbox.com |
@@ -76,5 +76,5 @@ In total, there are 12 code repositories used to manage the application infrastr
 [TODO]
 ## SRE Aspect 6: Improving Resiliency (AWS Resiliency Hub)
 [TODO]
-## Improvements and Future Enhancements
+## Future Improvements and Enhancements
 [TODO]
