@@ -45,6 +45,8 @@ Image 2: Solution Architecture
 
 - On the website, the user could upload an image as the card design. When this function is called, a PUT request is issued into AWS API Gateway which proxies the S3 images bucket. AWS EventBridge is enabled on this S3 bucket to issue event notifications (i.e.S3 Object Created event). An ECS ephemeral task detects this event and resizes this image into a thumbnail. Thumbnails are used in the card catalog images, while  actual images are used for the card sent to the recipient.
 
+- Once a card is created, the ECS task will create a cron job using AWS EventBridge Scheduler. On the scheduled date and time, this schedular will call an AWS Lambda function, passing it the recipient name, email and image path. This information will be used by the lambda function to query into the S3 images bucket to fetch the image and create an email. The email will be passed into AWS SNS and SES to be sent to the recipient.
+
 ## Repository and Technology Stack
 To implement our architecture, we have logically grouped various infrastructure components into its own code repository. This is to allow decoupling of the infrastructure components to enable unimpeded development of each section of the infrastructure. Each group of infrastructure components could be deployed or teardown without impacting other parts of the infrastructure. (For e.g, The database resource contains data which should persist even though other application resources can be tear-down. Infrastructure which supports image upload is unrelated to the infrastructure related to card delivery, and both can be deployed/teardown separately.)
 
