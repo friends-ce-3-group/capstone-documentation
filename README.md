@@ -21,9 +21,17 @@ These project is part of NTU Cloud Infrastructure Engineering (SCTP) Cohort 3 en
 Image 1: Website Homepage
 
 #### Feature 1: Card Image Upload
-[TODO]
-#### Feature 2: Scheduled Sending of Card
-[TODO]
+Users may wish to use their own images as the card design. An image can be selected from the user's own device and the user is required to complete a Captcha image before submitting the image.
+
+<img src="image-upload-function.png" width="200">
+
+
+
+
+#### Feature 2: Scheduled Card Email
+Once the card is scheduled, an automated cron job will be set up to send the card at a selected date and time automatically to the recipient's email.
+
+<img src="image-scheduled-email.png" width="200">
 
 ## Solution Architecture
 ![Image 2: Solution Architecture](image-solution-architecture.png)
@@ -32,7 +40,7 @@ Image 2: Solution Architecture
 ## Repository and Technology Stack
 To implement our architecture, we have logically grouped various infrastructure components into its own code repository. This is to allow decoupling of the infrastructure components to enable efficient development of each component by various developers. In addition, each group of infrastructure components could be deployed or teardowned without impacting other parts of the infrastructure. 
 
-**Github** is the version control system used for our code repositiory and **Terraform** is the Infrastructure as Code (IaC) tool used to deploy our AWS infrastructure components via **Github Actions**.
+**Github** is the version control system used for our code repository and **Terraform** is the Infrastructure as Code (IaC) tool used to deploy our AWS infrastructure components via **Github Actions**.
 
 | Repository | AWS Stack | Others |
 | ---------- | --------- | --------- |
