@@ -56,7 +56,7 @@ To implement our architecture, we have logically grouped various infrastructure 
 
 In total, there are 12 code repositories used to manage the application infrastructure and code.
 
-**Github** is the version control system used for our code repository and **Terraform** is the Infrastructure as Code (IaC) tool used to deploy our AWS infrastructure components via **Github Actions**.
+**Github** is the version control system used for our code repository and **Terraform** is the Infrastructure as Code (IaC) tool used to deploy our AWS infrastructure components via **Github Actions**. As far as possible, all of the AWS resources are set up via terraform in order to create a controlled version of our infrastructure and to aid in re-deployment in the event of disaster recovery.
 
 
 
