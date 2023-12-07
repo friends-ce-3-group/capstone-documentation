@@ -1,7 +1,7 @@
 # The GoodGreets Company
 
 ## Company Profile
-Established in 2023, The GoodGreets Company was set up to bring joy to the hearts of family, friends and colleagues with the simple act of sending a card.
+Established in 2023, The GoodGreets Company was set up to bring joy to the hearts of family, friends and colleagues with the simple act of sending a card. A user who wishes to send a card, can access the website and select a card design from a list of pre-loaded pictures. The user fills in the details of the recipient and schedule a date for the card to be sent. Thereafter, the user will be given a link to share for others to sign the card. The user could also upload a preferred picture of theirs to be used as the card design.
 
 ## Team Members
 - Low Chee Meng 
@@ -10,7 +10,8 @@ Established in 2023, The GoodGreets Company was set up to bring joy to the heart
 - Stephanie Wong
 
 ## Topic
-[TODO]
+These project is part of NTU Cloud Infrastructure Engineering (SCTP) Cohort 3 end-of-program capstone project. The selected topic is on Site Reliability Engineering (SRE). In this project, we showcase a monitoring solution on our GoodGreets website. Aside from the application, we also showcase monitoring dashboards, metrices, alarms and application logging that represent SRE.
+
 ## Website and Core Features
 | URL |
 | ----------- |
@@ -57,9 +58,11 @@ To implement our architecture, we have logically grouped various infrastructure 
 [TODO]
 ## SRE Aspect 2: Availability
 [TODO]
-## SRE Aspect 3: Monitoring (Cloudwatch & Grafana)
+## SRE Aspect 3: Monitoring Dashboard (Cloudwatch & Grafana)
 [TODO]
 ## SRE Aspect 4: Alarms (Emails & Slack)
 [TODO]
-## SRE Aspect 5: Improving Resiliency (AWS Resiliency Hub)
+## SRE Aspect 5: Logging
+[TODO]
+## SRE Aspect 6: Improving Resiliency (AWS Resiliency Hub)
 [TODO]
