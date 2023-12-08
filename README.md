@@ -103,10 +103,12 @@ To prevent bot attacks on our upload images function, AWS Captcha was embedded i
 #### Disaster Recovery, RTO and RPO
 <img src="image-rto-rpo.png" width="250">
 
-Based on AWS Resiliency Hub's assessment, our application and infrastructure should be able to withstand a disaster recovery. Both recovery time objective (RTO) and recovery point objective (RPO) are within the threshold timings. **It is worth noting that all AWS resources (including serverless infrastructure) are set up via Terraform**. So bringing back up the infrastructure in another AWS Region is straightforward.
+<img src="image-rto-rpo-application.png" width="250">
+<img src="image-rto-rpo-infrastructure.png" width="250">
+<img src="image-rto-rpo-availability-zone.png" width="250">
 
-#### Serverless Resources & Infrastructure as Code
-[TODO]
+
+Based on AWS Resiliency Hub's assessment, our application and infrastructure should be able to withstand a disaster recovery. Both recovery time objective (RTO) and recovery point objective (RPO) are within the threshold timings. **It is worth noting that all AWS resources (including serverless infrastructure) are set up via Terraform**. So bringing back up the infrastructure in another AWS Region is straightforward.
 
 #### Multiple Availabiliy Zones for ECS Cluster
 [TODO]
