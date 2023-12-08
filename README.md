@@ -78,17 +78,24 @@ In total, there are 12 code repositories used to manage the application infrastr
 ## SRE Aspect 1: Security
 #### Security Groups and Origin Access Control
 
-<img stype="float: left;" src="image.png" width="25">
-Security Groups are used throughout the infrastructure to protect resources from unverified direct accesses. The RDS only allows inbound traffic from the security group of the ECS Tasks to ensure only ECS tasks can connect to the database. The ECS service which contains the ECS tasks only allows inbound traffic from calls coming from the Application Load Balancer (ALB). The application load balancer only allows inbound traffic from calls coming from CloudFront, which is protected by AWS Web Application Firewall (WAF) 
+<img src="image-ecs-rds-security-group.png" width="250">
+
+Security Groups are used throughout the infrastructure to protect resources from direct accesses. The RDS only allows inbound traffic from the security group of the ECS Tasks to ensure only ECS tasks can make connections to the database. The ECS service which contains the ECS tasks only allows inbound traffic coming from the Application Load Balancer (ALB). 
 
 
+<img src="image-cloudfront-security-groups.png" width="250">
 
-<img stype="float: left;" src="image-2.png" width="25">
-[TODO]
+AWS Cloudfront distribution was setup with the the ALB, S3 buckets and API Gateway resources as the origin. The intention is to only allow accesses to these resources from Cloudfront. For example, S3 buckets should not be public and APIs should only called from Cloudfront hostnames. Cloudfront also serves as a Content Delivery Network to allow content to be cached at the edge so that end-user can experience faster accesses into our website content. 
 
 
-#### AWS Captcha
-[TODO]
+#### AWS WAF, Shield and Captcha
+Web Application Firewall (WAF) and standard AWS Shield was set up to protect both the ALB and APIGateway resources. These tools allow us to track network traffic. In particular, the ability to have a geographical view of our visitors, bot detection, allowed/blocked requests and prevent DDoS attacks.
+
+<img src="image-aws-captcha.png" width="250">
+
+To prevent bot attacks on our upload images function, AWS Captcha was embedded into the upload button, requiring users to correctly solve the puzzle first before the upload is allowed.
+
+
 #### RDS Proxy
 [TODO]
 ## SRE Aspect 2: Availability
