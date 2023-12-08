@@ -70,7 +70,7 @@ In total, there are 12 code repositories used to manage the application infrastr
 | https://github.com/friends-ce-3-group/capstone-ecr | ECR | - |
 | https://github.com/friends-ce-3-group/capstone-pydbcapstone | - | Python |
 | https://github.com/friends-ce-3-group/capstone-pythumbnailscapstone | - | Python |
-| https://github.com/friends-ce-3-group/capstone-rds | RDS MySQL, KMS | - |
+| https://github.com/friends-ce-3-group/capstone-rds | RDS MySQL, RDS Proxy, KMS | - |
 | https://github.com/friends-ce-3-group/capstone-cards-delivery | EventBridge, Lambda, SNS, SES | Python |
 | https://github.com/friends-ce-3-group/capstone-monitoring | CloudWatch | Grafana | 
 | https://github.com/friends-ce-3-group/capstone-alarm | CW Alarms, SNS | Slack |
@@ -97,7 +97,10 @@ To prevent bot attacks on our upload images function, AWS Captcha was embedded i
 
 
 #### RDS Proxy
-[TODO]
+<img src="images-rds-proxy.png" width="250">
+
+Assesses into the RDS MySQL database is via the RDS Proxy, and only the security group of the ECS service is allowed inbound accesses into the RDS database. The benefit of using the RDS Proxy is to make the database more scalable and resilient to database failures, reducing failover times (Refer to [AWS RDS Proxy](https://aws.amazon.com/rds/proxy/)). This helps in database availability.
+
 ## SRE Aspect 2: Availability
 
 #### Disaster Recovery, RTO and RPO
@@ -120,7 +123,7 @@ Based on AWS Resiliency Hub's assessment, our application and infrastructure sho
 ## SRE Aspect 6: Improving Resiliency (AWS Resiliency Hub)
 <img src="image-resilience-hub-improvements.png" width="250">
 
-After the application and infrastructure code were setup, we relied on AWS Resiliency Hub service to conduct assessments on the website's resiliency. We found the assessments useful as it had provided us with recommendations such as introducing more alarm types, s3 object versioning and changes to both Lambda and ECS services configuration. We acted on some of these recommendations and managed to improve our resiliency score from 22/100 to 54/100. 
+After the application and infrastructure code were setup, we relied on AWS Resiliency Hub service to conduct assessments on the website's resiliency. We found the assessments useful as it had provided us with recommendations such as introducing more alarm types, s3 object versioning and changes to both Lambda and ECS services configuration. We acted on some of these recommendations and managed to improve our resiliency score from 22/100 to 54/100. Further adjustments of the application could be done to increase the resiliency score as a Day2.
 
 ## Future Improvements and Enhancements
 [TODO]
