@@ -117,7 +117,10 @@ Based on AWS Resiliency Hub's assessment, our application and infrastructure sho
 ## SRE Aspect 3: Monitoring Dashboard (Cloudwatch & Grafana)
 [TODO]
 ## SRE Aspect 4: Alarms (Emails & Slack)
+<img src="images-emails-slack.png" width="250">
+
 [TODO]
+
 ## SRE Aspect 5: Logging
 [TODO]
 ## SRE Aspect 6: Improving Resiliency (AWS Resiliency Hub)
