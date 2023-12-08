@@ -77,7 +77,16 @@ In total, there are 12 code repositories used to manage the application infrastr
 
 ## SRE Aspect 1: Security
 #### Security Groups and Origin Access Control
+
+<img stype="float: left;" src="image.png" width="25">
+Security Groups are used throughout the infrastructure to protect resources from unverified direct accesses. The RDS only allows inbound traffic from the security group of the ECS Tasks to ensure only ECS tasks can connect to the database. The ECS service which contains the ECS tasks only allows inbound traffic from calls coming from the Application Load Balancer (ALB). The application load balancer only allows inbound traffic from calls coming from CloudFront, which is protected by AWS Web Application Firewall (WAF) 
+
+
+
+<img stype="float: left;" src="image-2.png" width="25">
 [TODO]
+
+
 #### AWS Captcha
 [TODO]
 #### RDS Proxy
