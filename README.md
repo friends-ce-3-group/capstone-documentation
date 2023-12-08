@@ -99,7 +99,17 @@ To prevent bot attacks on our upload images function, AWS Captcha was embedded i
 #### RDS Proxy
 [TODO]
 ## SRE Aspect 2: Availability
+#### Serverless Resources
 [TODO]
+#### Multiple Availabiliy Zones for ECS Cluster
+[TODO]
+#### RTO and RTP
+[TODO]
+#### RDS Replica
+[TODO]
+#### Disaster Recovery and Infrastructure as Code
+[TODO]
+
 ## SRE Aspect 3: Monitoring Dashboard (Cloudwatch & Grafana)
 [TODO]
 ## SRE Aspect 4: Alarms (Emails & Slack)
