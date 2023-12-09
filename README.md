@@ -56,7 +56,7 @@ To implement our architecture, we have logically grouped various infrastructure 
 
 In total, there are 12 code repositories used to manage the application infrastructure and code.
 
-**Github** is the version control system used for our code repository and **Terraform** is the Infrastructure as Code (IaC) tool used to deploy our AWS infrastructure components via **Github Actions**. As far as possible, all of the AWS resources are set up via terraform in order to create a controlled version of our infrastructure and to aid in re-deployment in the event of disaster recovery.
+**Github** is the version control system used for our code repository and **Terraform** is the Infrastructure as Code (IaC) tool used to deploy our AWS infrastructure components via **Github Actions**. As far as possible, the application's  resources are set up via terraform in order to create a controlled version of our infrastructure and to aid in re-deployment in another region in the event of disaster recovery.
 
 
 
@@ -118,6 +118,7 @@ Based on AWS Resiliency Hub's assessment, our application and infrastructure sho
 
 <img src="image-monitoring.png" width="250">
 
+Monitoring includes metrics, text logging, structured event logging, distributed tracing, and event introspection. The application uses 4 of AWS Cloudwatch services, mainly CloudWatch Metrics, Cloudwatch Logs, CloudWatch Alarms, and CloudWatch Dashboard to conduct realtime monitoring. In addition to Cloudwatch Dashboard, our team has also experimented with Grafana Dashboards to compare and contrast both tools.
 
 <img src="image-grafana-dashboard.png" width="500">
 
@@ -136,7 +137,7 @@ Based on AWS Resiliency Hub's assessment, our application and infrastructure sho
 ## SRE Aspect 6: Improving Resiliency (AWS Resiliency Hub)
 <img src="image-resilience-hub-improvements.png" width="250">
 
-After the application and infrastructure code were setup, we relied on AWS Resiliency Hub service to conduct assessments on the website's resiliency. We found the assessments useful as it had provided us with recommendations such as introducing more alarm types, s3 object versioning and changes to both Lambda and ECS services configuration. We acted on some of these recommendations and managed to improve our resiliency score from 22/100 to 54/100. Further adjustments of the application could be done to increase the resiliency score.
+After the application and infrastructure code were setup, we relied on AWS Resiliency Hub service to conduct assessments on the website's resiliency. We found the assessments useful as it had provided us with recommendations such as introducing more alarm types, s3 object versioning and changes to both Lambda and ECS services configuration. We acted on some of these recommendations and managed to improve our resiliency score from 22/100 to 54/100. **Further changes to the application based on the assessment should be done to increase the resiliency score**.
 
 ## Future Improvements and Enhancements
 [TODO]
