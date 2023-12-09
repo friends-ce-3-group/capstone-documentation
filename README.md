@@ -115,7 +115,17 @@ Based on AWS Resiliency Hub's assessment, our application and infrastructure sho
 [TODO]
 
 ## SRE Aspect 3: Monitoring Dashboard (Cloudwatch & Grafana)
-[TODO]
+
+<img src="image-monitoring.png" width="250">
+
+
+<img src="image-grafana-dashboard.png" width="500">
+
+<img src="image-cloudwatch-dashboard.png" width="500">
+
+
+
+
 ## SRE Aspect 4: Alarms (Emails & Slack)
 <img src="images-emails-slack.png" width="250">
 
@@ -126,7 +136,7 @@ Based on AWS Resiliency Hub's assessment, our application and infrastructure sho
 ## SRE Aspect 6: Improving Resiliency (AWS Resiliency Hub)
 <img src="image-resilience-hub-improvements.png" width="250">
 
-After the application and infrastructure code were setup, we relied on AWS Resiliency Hub service to conduct assessments on the website's resiliency. We found the assessments useful as it had provided us with recommendations such as introducing more alarm types, s3 object versioning and changes to both Lambda and ECS services configuration. We acted on some of these recommendations and managed to improve our resiliency score from 22/100 to 54/100. Further adjustments of the application could be done to increase the resiliency score as a Day2.
+After the application and infrastructure code were setup, we relied on AWS Resiliency Hub service to conduct assessments on the website's resiliency. We found the assessments useful as it had provided us with recommendations such as introducing more alarm types, s3 object versioning and changes to both Lambda and ECS services configuration. We acted on some of these recommendations and managed to improve our resiliency score from 22/100 to 54/100. Further adjustments of the application could be done to increase the resiliency score.
 
 ## Future Improvements and Enhancements
 [TODO]
