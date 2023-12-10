@@ -108,11 +108,20 @@ Assesses into the RDS MySQL database is via the RDS Proxy, and only the security
 
 Based on AWS Resiliency Hub's assessment, our application and infrastructure should be able to withstand a disaster recovery. Both recovery time objective (RTO) and recovery point objective (RPO) are within the threshold timings. **It is worth noting that all AWS resources (including serverless infrastructure) are set up via Terraform**. So bringing back up the infrastructure in another AWS Region is straightforward.
 
-#### Multiple Availabiliy Zones for ECS Cluster
-[TODO]
+#### Multiple Availabiliy Zones & AutoScaling for ECS Cluster
+
+| Availability Zones | Auto Scaling Policy | MinTasks | DesiredTasks | MaxTasks | 
+| ---------- | --------- | --------- | --------- | --------- |
+| us-west-2a <br> us-west-2b | Target Tracking <br> CPUUtilization @ 80% <br> MemoryUtilization @ 60% | 2 | 4 | 8 | 
+
+Availability Zones (AZ) are physically separate data centers within a region. The ECS cluster is deployed across two AZs to achieve a fault-tolerant architecture because if one AZ experiences issues, such as hardware failures or network problems, the other AZ can continue running the ECS cluster without disruption. If one AZ becomes unhealthy or experiences high traffic, ECS will automatically redirect traffic to healthy instances in other AZs. 
+
+Application auto-scaling is also enabled and the both CPU and memory utilisation is tracked to spin up additional compute resources when workload is high, thereby enhancing application responsiveness and availability.
+
 
 #### RDS Replica
-[TODO]
+
+A single read replica is instantiated to augment the primary RDS instance. This helps to distribute the load and prevents read-intensive queries from impacting the performance of the primary instance. The read replica also provides redundancy for read operations; if the primary instance becomes unavailable, applications can still read from the read replica. It can also serve as a recovery data source when the data in the primary RDS instance is lost. 
 
 ## SRE Aspect 3: Monitoring Dashboard (Cloudwatch & Grafana)
 
