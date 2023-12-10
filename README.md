@@ -56,7 +56,7 @@ To implement our architecture, we have logically grouped various infrastructure 
 
 In total, there are 12 code repositories used to manage the application infrastructure and code.
 
-**Github** is the version control system used for our code repository and **Terraform** is the Infrastructure as Code (IaC) tool used to deploy our AWS infrastructure components via **Github Actions**. As far as possible, the application's  resources are set up via terraform in order to create a controlled version of our infrastructure and to aid in re-deployment in another region in the event of disaster recovery.
+**Github** is the version control system used for our code repository and **Terraform** is the Infrastructure as Code (IaC) tool used to deploy our AWS infrastructure components via **Github Actions**. The majority of the application's resources are set up via terraform in order to create a controlled version of our infrastructure and to aid in re-deployment in another region in the event of disaster recovery.
 
 
 
@@ -106,7 +106,7 @@ Assesses into the RDS MySQL database is via the RDS Proxy, and only the security
 #### Disaster Recovery, RTO and RPO
 <img src="image-rto-rpo.png" width="250">
 
-Based on AWS Resiliency Hub's assessment, our application and infrastructure should be able to withstand a disaster recovery. Both recovery time objective (RTO) and recovery point objective (RPO) are within the threshold timings. **It is worth noting that all AWS resources (including serverless infrastructure) are set up via Terraform**. So bringing back up the infrastructure in another AWS Region is straightforward.
+Based on AWS Resiliency Hub's assessment, our application and infrastructure should be able to withstand a disaster recovery. Both recovery time objective (RTO) and recovery point objective (RPO) are within the threshold timings. **It is worth noting that the majority of AWS resources (including serverless infrastructure) are set up via Terraform**. So bringing back up the infrastructure in another AWS Region is straightforward.
 
 #### Multiple Availabiliy Zones & AutoScaling for ECS Cluster
 
