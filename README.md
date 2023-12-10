@@ -119,11 +119,11 @@ Availability Zones (AZ) are physically separate data centers within a region. Th
 Application auto-scaling is also enabled and the both CPU and memory utilisation is tracked to spin up additional compute resources when workload is high, thereby enhancing application responsiveness and availability.
 
 
-#### RDS Replica
+#### RDS & Replication
 
-| Availability Zones | RDS Proxy | Replication | 
-| ---------- | --------- | --------- |
-| us-west-2a (Primary) <br> us-west-2b (Secondary) | Yes | Yes | 
+| Availability Zones | Type | RDS Proxy | Replication | Storage AutoScaling |
+| ---------- | ---------- | ---------- | --------- | --------- | 
+| us-west-2a (Primary) <br> us-west-2b (Secondary) | MySQL | Yes | Yes | Disabled <br> *To be reviewed in future* |
 
 
 A single read replica is instantiated to augment the primary RDS instance. This helps to distribute the load and prevents read-intensive queries from impacting the performance of the primary instance. The read replica also provides redundancy for read operations; if the primary instance becomes unavailable, applications can still read from the read replica. It can also serve as a recovery data source when the data in the primary RDS instance is lost. 
