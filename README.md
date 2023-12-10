@@ -121,6 +121,11 @@ Application auto-scaling is also enabled and the both CPU and memory utilisation
 
 #### RDS Replica
 
+| Availability Zones | RDS Proxy | Replication | 
+| ---------- | --------- | --------- |
+| us-west-2a (Primary) <br> us-west-2b (Secondary) | Yes | Yes | 
+
+
 A single read replica is instantiated to augment the primary RDS instance. This helps to distribute the load and prevents read-intensive queries from impacting the performance of the primary instance. The read replica also provides redundancy for read operations; if the primary instance becomes unavailable, applications can still read from the read replica. It can also serve as a recovery data source when the data in the primary RDS instance is lost. 
 
 ## SRE Aspect 3: Monitoring Dashboard (Cloudwatch & Grafana)
