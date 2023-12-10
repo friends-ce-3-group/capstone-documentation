@@ -59,7 +59,6 @@ In total, there are 12 code repositories used to manage the application infrastr
 **Github** is the version control system used for our code repository and **Terraform** is the Infrastructure as Code (IaC) tool used to deploy our AWS infrastructure components via **Github Actions**. The majority of the application's resources are set up via terraform in order to create a controlled version of our infrastructure and to aid in re-deployment in another region in the event of disaster recovery.
 
 
-
 | Repository | AWS Stack | Others |
 | ---------- | --------- | --------- |
 | https://github.com/friends-ce-3-group/capstone-cloudfront | CloudFront, WACL/WAF |
@@ -74,6 +73,10 @@ In total, there are 12 code repositories used to manage the application infrastr
 | https://github.com/friends-ce-3-group/capstone-cards-delivery | EventBridge, Lambda, SNS, SES | Python |
 | https://github.com/friends-ce-3-group/capstone-monitoring | CloudWatch | Grafana | 
 | https://github.com/friends-ce-3-group/capstone-alarm | CW Alarms, SNS | Slack |
+
+
+#### Dependency Graph
+<img src="image-dependency-graph.png" width="800">
 
 ## SRE Aspect 1: Security
 #### Security Groups and Origin Access Control
