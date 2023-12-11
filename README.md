@@ -80,7 +80,7 @@ In total, there are 12 code repositories used to manage the application infrastr
 | https://github.com/friends-ce-3-group/capstone-pydbcapstone | - | Docker, Python (boto3, MySQL, Flask) |
 | https://github.com/friends-ce-3-group/capstone-pythumbnailscapstone | - | Docker, Python (boto3, MySQL, PIL) |
 | https://github.com/friends-ce-3-group/capstone-rds | RDS MySQL, RDS Proxy, KMS | - |
-| https://github.com/friends-ce-3-group/capstone-cards-delivery | EventBridge, Lambda, SES | Python |
+| https://github.com/friends-ce-3-group/capstone-cards-delivery | EventBridge, Lambda, SES | Python (boto3) |
 | https://github.com/friends-ce-3-group/capstone-monitoring | CloudWatch | Grafana | 
 | https://github.com/friends-ce-3-group/capstone-alarm | CW Alarms, SNS | Slack |
 
