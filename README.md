@@ -107,7 +107,7 @@ Assesses into the RDS MySQL database is via the RDS Proxy, and only the security
 ## SRE Aspect 2: Availability
 
 #### Disaster Recovery, RTO and RPO
-<img src="images/image-rto-rpo.png" width="800">
+<img src="images/image-rto-rpo.png" width="700">
 
 Based on AWS Resiliency Hub's assessment, our application and infrastructure should be able to withstand a disaster recovery. Both recovery time objective (RTO) and recovery point objective (RPO) are within the threshold timings. **It is worth noting that the majority of AWS resources (including serverless infrastructure) are set up via Terraform**. So bringing back up the infrastructure in another AWS Region is straightforward.
 
@@ -152,7 +152,7 @@ Monitoring includes metrics, text logging, structured event logging, distributed
 ## SRE Aspect 5: Logging
 [TODO]
 ## SRE Aspect 6: Improving Resiliency (AWS Resiliency Hub)
-<img src="images/image-resilience-hub-improvements.png" width="250">
+<img src="images/image-resilience-hub-improvements.png" width="700">
 
 After the application and infrastructure code were setup, we relied on AWS Resiliency Hub service to conduct assessments on the website's resiliency. We found the assessments useful as it had provided us with recommendations such as introducing more alarm types, s3 object versioning and changes to both Lambda and ECS services configuration. We acted on some of these recommendations and managed to improve our resiliency score from 22/100 to 54/100. **Further changes to the application based on the assessment should be done to increase the resiliency score**.
 
