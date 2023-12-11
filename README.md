@@ -8,7 +8,7 @@ This project is part of the NTU Cloud Infrastructure Engineering (SCTP) Cohort 3
 - Stephanie Wong
 
 ## Contents
-- [Project Company Profile](#project-company-profile)
+- [Company Profile](#project-company-profile)
 - [Website and Features](#website-and-features)
 - [Solution Architecture](#solution-architecture)
 - [Repository and Technology Stack](#repository-and-technology-stack)
@@ -18,7 +18,7 @@ This project is part of the NTU Cloud Infrastructure Engineering (SCTP) Cohort 3
 - [Future Improvements and Enhancements](#future-improvements-and-enhancements)
 - [Appendix](#Appendix)
 
-## Project Company Profile - The GoodGreets Company
+## Company Profile - The GoodGreets Company
 
 Established in 2023, The GoodGreets Company was set up to bring joy to the hearts of family, friends, and colleagues with the simple act of sending a card. A user who wishes to send a card, can access the website and select a card design from a list of pre-loaded pictures. The user fills in the details of the recipient and schedules a date for the card to be sent. Thereafter, the user will be given a link to share for others to sign the card. The user could also upload a preferred picture of theirs to be used as the card design.
 
