@@ -55,7 +55,7 @@ Image 2: Solution Architecture
 
 - On the website, the user could upload an image as the card design. When this function is called, a PUT request is issued into AWS API Gateway which proxies the S3 images bucket. AWS EventBridge is enabled on this S3 bucket to issue event notifications (i.e.S3 Object Created event). An ECS ephemeral task detects this event and resizes this image into a thumbnail. Thumbnails are used in the card catalog images, while actual images are used for the card sent to the recipient.
 
-- Once a card is created, the ECS task will create a cron job using AWS EventBridge Scheduler. On the scheduled date and time, this schedular will call an AWS Lambda function, passing it the recipient name, email, and image path. This information will be used by the lambda function to query into the S3 images bucket to fetch the image and create an email. The email will be passed into AWS SNS and SES to be sent to the recipient.
+- Once a card is created, the ECS task will create a cron job using AWS EventBridge Scheduler. On the scheduled date and time, this schedular will call an AWS Lambda function, passing it the recipient name, email, and image path. This information will be used by the AWS Lambda function to query into the S3 images bucket to fetch the image and create an email. The email will be passed into AWS SNS and SES to be sent to the recipient.
 
 - Cloudwatch metrics and logging are enabled on all the AWS resources where available. The metrics are exposed into dashboards for trend and real-time monitoring. The dashboarding tools used are AWS Cloudwatch Dashboard and AWS-managed Grafana. Dashboard views are split into sections to cater to the interests of different groups (e.g. Management, Developers, Security).
 
@@ -166,7 +166,7 @@ Security Groups are used throughout the infrastructure to protect resources from
 
 <img src="images/image-cloudfront-security-groups.png" width="250">
 
-AWS Cloudfront distribution was set up with the ALB, S3 buckets, and API Gateway resources as the origin. The intention is to only allow access to these resources from Cloudfront. For example, S3 buckets should not be public and APIs should only called from Cloudfront hostnames. Cloudfront also serves as a Content Delivery Network to allow content to be cached at the edge so that end-users can experience faster access to our website content. 
+AWS CloudFront distribution was set up with the ALB, S3 buckets, and API Gateway resources as the origin. The intention is to only allow access to these resources from CloudFront. For example, S3 buckets should not be public and APIs should only called from CloudFront hostnames. CloudFront also serves as a Content Delivery Network to allow content to be cached at the edge so that end-users can experience faster access to our website content. 
 
 
 #### AWS WAF, Shield, and Captcha
