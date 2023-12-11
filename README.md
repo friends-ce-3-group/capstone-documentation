@@ -17,14 +17,14 @@ This project is part of NTU Cloud Infrastructure Engineering (SCTP) Cohort 3 end
 | ----------- |
 | https://goodgreets.sctp-sandbox.com |
 
-![Image 1: Website Homepage](image-website-frontend.png)
+![Image 1: Website Homepage](images/image-website-frontend.png)
 
 Image 1: Website Homepage
 
 #### Feature 1: Card Image Upload
 Users may wish to use their own images as the card design. An image can be selected from the user's own device and the user is required to complete a Captcha image before submitting the image.
 
-<img src="image-upload-function.png" width="200">
+<img src="images/image-upload-function.png" width="200">
 
 
 
@@ -32,10 +32,10 @@ Users may wish to use their own images as the card design. An image can be selec
 #### Feature 2: Scheduled Card Email
 Once the card is scheduled, an automated cron job will be set up to send the card at a selected date and time automatically to the recipient's email.
 
-<img src="image-scheduled-email.png" width="200">
+<img src="images/image-scheduled-email.png" width="200">
 
 ## Solution Architecture
-![Image 2: Solution Architecture](image-solution-architecture.png)
+![Image 2: Solution Architecture](images/image-solution-architecture.png)
 
 Image 2: Solution Architecture
 
@@ -76,17 +76,17 @@ In total, there are 12 code repositories used to manage the application infrastr
 
 
 #### Dependency Graph
-<img src="image-dependency-graph.png" width="800">
+<img src="images/image-dependency-graph.png" width="800">
 
 ## SRE Aspect 1: Security
 #### Security Groups and Origin Access Control
 
-<img src="image-ecs-rds-security-group.png" width="250">
+<img src="images/image-ecs-rds-security-group.png" width="250">
 
 Security Groups are used throughout the infrastructure to protect resources from direct accesses. The RDS only allows inbound traffic from the security group of the ECS Tasks to ensure only ECS tasks can make connections to the database. The ECS service which contains the ECS tasks only allows inbound traffic coming from the Application Load Balancer (ALB). 
 
 
-<img src="image-cloudfront-security-groups.png" width="250">
+<img src="images/image-cloudfront-security-groups.png" width="250">
 
 AWS Cloudfront distribution was setup with the the ALB, S3 buckets and API Gateway resources as the origin. The intention is to only allow accesses to these resources from Cloudfront. For example, S3 buckets should not be public and APIs should only called from Cloudfront hostnames. Cloudfront also serves as a Content Delivery Network to allow content to be cached at the edge so that end-user can experience faster accesses into our website content. 
 
@@ -94,20 +94,20 @@ AWS Cloudfront distribution was setup with the the ALB, S3 buckets and API Gatew
 #### AWS WAF, Shield and Captcha
 Web Application Firewall (WAF) and standard AWS Shield was set up to protect both the ALB and APIGateway resources. These tools allow us to track network traffic. In particular, the ability to have a geographical view of our visitors, bot detection, allowed/blocked requests and prevent DDoS attacks.
 
-<img src="image-aws-captcha.png" width="250">
+<img src="images/image-aws-captcha.png" width="250">
 
 To prevent bot attacks on our upload images function, AWS Captcha was embedded into the upload button, requiring users to correctly solve the puzzle first before the upload is allowed.
 
 
 #### RDS Proxy
-<img src="images-rds-proxy.png" width="250">
+<img src="images/images-rds-proxy.png" width="250">
 
 Assesses into the RDS MySQL database is via the RDS Proxy, and only the security group of the ECS service is allowed inbound accesses into the RDS database. The benefit of using the RDS Proxy is to make the database more scalable and resilient to database failures, reducing failover times (Refer to [AWS RDS Proxy](https://aws.amazon.com/rds/proxy/)). This helps in database availability.
 
 ## SRE Aspect 2: Availability
 
 #### Disaster Recovery, RTO and RPO
-<img src="image-rto-rpo.png" width="250">
+<img src="images/image-rto-rpo.png" width="250">
 
 Based on AWS Resiliency Hub's assessment, our application and infrastructure should be able to withstand a disaster recovery. Both recovery time objective (RTO) and recovery point objective (RPO) are within the threshold timings. **It is worth noting that the majority of AWS resources (including serverless infrastructure) are set up via Terraform**. So bringing back up the infrastructure in another AWS Region is straightforward.
 
@@ -133,26 +133,26 @@ A single read replica is instantiated to augment the primary RDS instance. This 
 
 ## SRE Aspect 3: Monitoring Dashboard (Cloudwatch & Grafana)
 
-<img src="image-monitoring.png" width="250">
+<img src="images/image-monitoring.png" width="250">
 
 Monitoring includes metrics, text logging, structured event logging, distributed tracing, and event introspection. The application uses 4 of AWS Cloudwatch services, mainly CloudWatch Metrics, Cloudwatch Logs, CloudWatch Alarms, and CloudWatch Dashboard to conduct realtime monitoring. In addition to Cloudwatch Dashboard, our team has also experimented with Grafana Dashboards to compare and contrast both tools.
 
-<img src="image-grafana-dashboard.png" width="500">
+<img src="images/image-grafana-dashboard.png" width="500">
 
-<img src="image-cloudwatch-dashboard.png" width="500">
+<img src="images/image-cloudwatch-dashboard.png" width="500">
 
 
 
 
 ## SRE Aspect 4: Alarms (Emails & Slack)
-<img src="images-emails-slack.png" width="250">
+<img src="images/images-emails-slack.png" width="250">
 
 [TODO]
 
 ## SRE Aspect 5: Logging
 [TODO]
 ## SRE Aspect 6: Improving Resiliency (AWS Resiliency Hub)
-<img src="image-resilience-hub-improvements.png" width="250">
+<img src="images/image-resilience-hub-improvements.png" width="250">
 
 After the application and infrastructure code were setup, we relied on AWS Resiliency Hub service to conduct assessments on the website's resiliency. We found the assessments useful as it had provided us with recommendations such as introducing more alarm types, s3 object versioning and changes to both Lambda and ECS services configuration. We acted on some of these recommendations and managed to improve our resiliency score from 22/100 to 54/100. **Further changes to the application based on the assessment should be done to increase the resiliency score**.
 
