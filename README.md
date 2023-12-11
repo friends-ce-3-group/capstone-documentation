@@ -11,6 +11,7 @@ Established in 2023, The GoodGreets Company was set up to bring joy to the heart
 
 # Contents
 - [Topic](#topic)
+- [Website and Features](#website-and-features)
 
 
 ## Topic
