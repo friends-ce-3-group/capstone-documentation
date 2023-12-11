@@ -88,6 +88,8 @@ In total, there are 12 code repositories used to manage the application infrastr
 
 #### Dependency Graph Between Repositories
 
+The dependencies between the application and infrastructure components implemented in the separate repositories are shown in the dependency graph below.
+
 ```mermaid
 graph TB
     ecr[capstone-ecr];
