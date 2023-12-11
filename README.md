@@ -107,7 +107,7 @@ Assesses into the RDS MySQL database is via the RDS Proxy, and only the security
 ## SRE Aspect 2: Availability
 
 #### Disaster Recovery, RTO and RPO
-<img src="images/image-rto-rpo.png" width="250">
+<img src="images/image-rto-rpo.png" width="800">
 
 Based on AWS Resiliency Hub's assessment, our application and infrastructure should be able to withstand a disaster recovery. Both recovery time objective (RTO) and recovery point objective (RPO) are within the threshold timings. **It is worth noting that the majority of AWS resources (including serverless infrastructure) are set up via Terraform**. So bringing back up the infrastructure in another AWS Region is straightforward.
 
