@@ -101,10 +101,10 @@ graph TB
     s3website[capstone-s3-website];
     alarm[capstone-alarm];
     monitoring[capstone-monitoring];
-    ecsthumbnails[capstone-ecs-thumbnails];
-    ecsCRUD[capstone-ecs-CRUD];
-    ecscommon[capstone-ecs-common-infra];
-    ecsprometheus[capstone-ecs-prometheus];
+    ecsthumbnails[capstone-ecs-mod-thumbnails];
+    ecsCRUD[capstone-ecs-mod-CRUD-service];
+    ecscommon[capstone-ecs-mod-common-infra];
+    ecsprometheus[capstone-ecs-mod-prometheus];
 
     monitoring -.->|data from| ecsCRUD;
     monitoring -.->|data from| cloudfront;
