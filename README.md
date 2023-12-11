@@ -256,6 +256,7 @@ The improvements that we would like to make to the current implementation of the
 - Address the vulnerabilities found in the container images by the ECR scanning service.
 - Switch from RDS to DynamoDB for database services.
 - Switch from ECS standalone task to AWS Lambda for the thumbnail conversion service.
+- Make improvements on monitoring metrics and visualisation.
 - Implement application unit testing, security scanning, and static code analysis in CI workflows.
 - Implement a multi-environment CD workflow with proper controls.
 
