@@ -1,7 +1,5 @@
-# The GoodGreets Company
-
-## Company Profile
-Established in 2023, The GoodGreets Company was set up to bring joy to the hearts of family, friends, and colleagues with the simple act of sending a card. A user who wishes to send a card, can access the website and select a card design from a list of pre-loaded pictures. The user fills in the details of the recipient and schedules a date for the card to be sent. Thereafter, the user will be given a link to share for others to sign the card. The user could also upload a preferred picture of theirs to be used as the card design.
+# Introduction
+This project is part of the NTU Cloud Infrastructure Engineering (SCTP) Cohort 3 end-of-program capstone project. The theme of this project is Site Reliability Engineering (SRE). In this project, we showcase a monitoring solution on our GoodGreets website. Aside from the application, we showcase monitoring dashboards, metrics, alarms, and application logging that represent SRE.
 
 ## Team Members
 - Low Chee Meng 
@@ -10,7 +8,7 @@ Established in 2023, The GoodGreets Company was set up to bring joy to the heart
 - Stephanie Wong
 
 ## Contents
-- [Topic](#topic)
+- [Project Company Profile](#project-company-profile)
 - [Website and Features](#website-and-features)
 - [Solution Architecture](#solution-architecture)
 - [Repository and Technology Stack](#repository-and-technology-stack)
@@ -20,8 +18,10 @@ Established in 2023, The GoodGreets Company was set up to bring joy to the heart
 - [Future Improvements and Enhancements](#future-improvements-and-enhancements)
 - [Appendix](#Appendix)
 
-## Topic
-This project is part of the NTU Cloud Infrastructure Engineering (SCTP) Cohort 3 end-of-program capstone project. The theme of this project is Site Reliability Engineering (SRE). In this project, we showcase a monitoring solution on our GoodGreets website. Aside from the application, we showcase monitoring dashboards, metrics, alarms, and application logging that represent SRE.
+## Project Company Profile
+## The GoodGreets Company
+
+Established in 2023, The GoodGreets Company was set up to bring joy to the hearts of family, friends, and colleagues with the simple act of sending a card. A user who wishes to send a card, can access the website and select a card design from a list of pre-loaded pictures. The user fills in the details of the recipient and schedules a date for the card to be sent. Thereafter, the user will be given a link to share for others to sign the card. The user could also upload a preferred picture of theirs to be used as the card design.
 
 ## Website and Features
 | URL |
