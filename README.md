@@ -161,7 +161,7 @@ graph TB
 
 <img src="images/image-ecs-rds-security-group.png" width="250">
 
-Security Groups are used throughout the infrastructure to protect resources from direct access. The RDS only allows inbound traffic from the security group of the ECS Tasks to ensure only ECS tasks can make connections to the database. The ECS service which contains the ECS tasks only allows inbound traffic coming from the Application Load Balancer (ALB). 
+Security Groups are used throughout the infrastructure to protect resources from direct access. The RDS only allows inbound traffic from the security group of the ECS tasks to ensure only ECS tasks can make connections to the database. The ECS service which contains the ECS tasks only allows inbound traffic coming from the Application Load Balancer (ALB). 
 
 
 <img src="images/image-cloudfront-security-groups.png" width="250">
@@ -255,7 +255,7 @@ The improvements that we would like to make to the current implementation of the
 - Implement the modifications to the infrastructure as recommended by AWS Resiliency Hub.
 - Address the vulnerabilities found in the container images by the ECR scanning service.
 - Switch from RDS to DynamoDB for database services.
-- Switch from ECS Task to AWS Lambda for the thumbnail conversion service.
+- Switch from ECS standalone task to AWS Lambda for the thumbnail conversion service.
 - Implement application unit testing, security scanning, and static code analysis in CI workflows.
 - Implement a multi-environment CD workflow with proper controls.
 
