@@ -75,8 +75,8 @@ In total, there are 12 code repositories used to manage the application infrastr
 | https://github.com/friends-ce-3-group/capstone-alarm | CW Alarms, SNS | Slack |
 
 
-#### Dependency Graph
-<img src="images/image-dependency-graph.png" width="800">
+#### Dependency Graph Between Repositories
+[Reference Link](DependencyGraph.md)
 
 ## SRE Aspect 1: Security
 #### Security Groups and Origin Access Control
