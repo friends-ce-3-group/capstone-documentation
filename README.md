@@ -237,18 +237,28 @@ After the application and infrastructure code were setup, we relied on AWS Resil
 
 The team used GitHub Projects as the project planning and management tool. The link to the project boards is [here](https://github.com/orgs/friends-ce-3-group/projects/3).
 
-The project timeline was split into three sprints. The focus of the first sprint was on delivering the application and infrastructure components and on exploring the options for monitoring and resilience assessment tools. In the second sprint, we made improvements to the security and availability settings of the infrastructure and began the implementation of monitoring tools. In the third and final sprint, we implemented the resilience assessment tool and finalised the monitoring system. 
+The project timeline was split into three sprints. The focus of the first sprint was on delivering the application and infrastructure components and on exploring options for monitoring and resilience assessment tools. In the second sprint, we made improvements to the security and availability settings of the infrastructure and began the implementation of monitoring tools. In the third and final sprint, we implemented the resilience assessment tool and finalised the monitoring system. 
 
 ## Summary
 
 A three-tier web application for a greeting card website was designed, developed and deployed in this project. The team implemented the application code for the website presentation and the database and data storage interface application layers, the IaC code for the AWS infrastructure components needed to support the application, the monitoring and alarms components required for observing the health of the entire system while in operation, and the code scanning tools that help us to measure and improve system availability and resilience.
 
-The microservice architecture facilitated loose coupling between the infrastructure components. On this foundation the team was able to concurrently implement separate application and infrastructure components in multiple repositories while minimising the problem of merge conflicts. This allowed the bulk of the infrastructure work to be implemented quickly and early on in the project, which afforded the team more time to explore and experiment with infrastructure monitoring and resilience improvement tools.
+The microservice architecture facilitated loose coupling between the infrastructure components. On this foundation the team was able to concurrently implement separate application and infrastructure components in multiple repositories while minimising the problem of merge conflicts.
 
 A project management tool was used for planning and issue tracking for our development and administrative tasks.
 
 ## Future Improvements and Enhancements
-[TODO]
+
+The improvements that we would like to make to the current implementation of the application are:
+
+- Implement the modifications to the infrastructure as recommended by AWS Resiliency Hub.
+- Address the vulnerabilities found in the container images by the ECR scanning service.
+- Switch from RDS to DynamoDB for database services.
+- Switch from ECS Task to AWS Lambda for the thumbnail conversion service.
+- Implement security scanning in CI workflows.
+- Implement application unit testing in CI workflows.
+- Implement a multi-environment CD workflow with proper controls.
+
 ## Appendix
 [TODO]
 #### Links for Presentation
