@@ -9,6 +9,10 @@ Established in 2023, The GoodGreets Company was set up to bring joy to the heart
 - Tang Kwong Hoong
 - Stephanie Wong
 
+# Contents
+- [Topic](#topic)
+
+
 ## Topic
 This project is part of NTU Cloud Infrastructure Engineering (SCTP) Cohort 3 end-of-program capstone project. The theme of this project is Site Reliability Engineering (SRE). In this project, we showcase a monitoring solution on our GoodGreets website. Aside from the application, we showcase monitoring dashboards, metrices, alarms and application logging that represent SRE.
 
