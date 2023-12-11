@@ -76,7 +76,72 @@ In total, there are 12 code repositories used to manage the application infrastr
 
 
 #### Dependency Graph Between Repositories
-[Reference Link](DependencyGraph.md)
+
+```mermaid
+graph TB
+    ecr[capstone-ecr];
+    vpc-network[terraform-aws-network];
+    pythumbnail[capstone-pythumbnailscapstone];
+    cloudfront[capstone-cloudfront];
+    rds[capstone-rds];
+    carddelivery[capstone-cards-delivery];
+    pydb[capstone-pydbcapstone];
+    s3buckets[capstone-s3-buckets];
+    s3website[capstone-s3-website];
+    alarm[capstone-alarm];
+    monitoring[capstone-monitoring];
+    ecsthumbnails[capstone-ecs-thumbnails];
+    ecsCRUD[capstone-ecs-CRUD];
+    ecscommon[capstone-ecs-common-infra];
+    ecsprometheus[capstone-ecs-prometheus];
+
+    monitoring -.->|data from| ecsCRUD;
+    monitoring -.->|data from| cloudfront;
+    monitoring -.->|data from| rds;
+    monitoring -.->|data from| ecsprometheus;
+    monitoring -.->|data from| ecscommon;
+    monitoring -.->|data from| carddelivery;
+    
+    alarm -.->|data from| ecsCRUD;
+    alarm -.->|data from| cloudfront;
+    alarm -.->|data from| rds;
+    alarm -.->|data from| ecsprometheus;
+    alarm -.->|data from| ecscommon;
+    alarm -.->|data from| carddelivery;
+
+    pythumbnail -->|depends on| ecr;
+    pythumbnail -->|depends on| rds;
+
+    s3website -->|depends on| s3buckets;
+
+    ecsprometheus -->|depends on| ecsCRUD;
+    ecsprometheus -->|depends on| ecscommon;
+    ecsprometheus -->|depends on| vpc-network;
+
+    ecsCRUD -->|depends on| ecscommon;
+    ecsCRUD -->|depends on| vpc-network;
+
+    ecscommon -->|depends on| vpc-network;
+
+    ecsthumbnails -->|depends on| s3buckets;
+    ecsthumbnails -->|depends on| vpc-network;
+    ecsthumbnails -->|depends on| ecscommon;
+    ecsthumbnails -->|depends on| pythumbnail;
+
+    pydb -->|depends on| ecr;
+    pydb -->|depends on| rds;
+    pydb -->|depends on| carddelivery;
+
+    carddelivery -->|depends on| s3buckets;
+
+    rds -->|depends on| vpc-network;
+    rds -->|depends on| ecscommon;
+    rds -->|depends on| ecsCRUD;
+
+    cloudfront -->|depends on| s3buckets;
+    cloudfront -->|depends on| s3website;
+    cloudfront -->|depends on| ecscommon;
+```
 
 ## SRE Aspect 1: Security
 #### Security Groups and Origin Access Control
@@ -155,6 +220,20 @@ Monitoring includes metrics, text logging, structured event logging, distributed
 <img src="images/image-resilience-hub-improvements.png" width="700">
 
 After the application and infrastructure code were setup, we relied on AWS Resiliency Hub service to conduct assessments on the website's resiliency. We found the assessments useful as it had provided us with recommendations such as introducing more alarm types, s3 object versioning and changes to both Lambda and ECS services configuration. We acted on some of these recommendations and managed to improve our resiliency score from 22/100 to 54/100. **Further changes to the application based on the assessment should be done to increase the resiliency score**.
+
+## Project Management
+
+The team used GitHub Projects as the project planning and management tool. The link to the project boards is [here](https://github.com/orgs/friends-ce-3-group/projects/3).
+
+The project timeline was split into three sprints. The focus of the first sprint was on delivering the application and infrastructure components and on exploring the options for monitoring and resilience assessment tools. In the second sprint, we made improvements to the security and availability settings of the infrastructure and began the implementation of monitoring tools. In the third and final sprint, we implemented the resilience assessment tool and finalised the monitoring system. 
+
+## Summary
+
+A three-tier web application for a greeting card website was designed, developed and deployed in this project. The team implemented the application code for the website presentation and the database and data storage interface application layers, the IaC code for the AWS infrastructure components needed to support the application, the monitoring and alarms components required for observing the health of the entire system while in operation, and the code scanning tools that help us to measure and improve system availability and resilience.
+
+The microservice architecture facilitated loose coupling between the infrastructure components. On this foundation the team was able to concurrently implement separate application and infrastructure components in multiple repositories while minimising the problem of merge conflicts. This allowed the bulk of the infrastructure work to be implemented quickly and early on in the project, which afforded the team more time to explore and experiment with infrastructure monitoring and resilience improvement tools.
+
+A project management tool was used for planning and issue tracking for our development and administrative tasks.
 
 ## Future Improvements and Enhancements
 [TODO]
