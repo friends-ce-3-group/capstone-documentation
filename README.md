@@ -77,8 +77,8 @@ In total, there are 12 code repositories used to manage the application infrastr
 | https://github.com/friends-ce-3-group/terraform-aws-network | VPC, NATGW, Subnets | - |
 | https://github.com/friends-ce-3-group/capstone-ecs | ECS (Fargate), ALB, EventBridge, CloudFormation | Prometheus |
 | https://github.com/friends-ce-3-group/capstone-ecr | ECR | - |
-| https://github.com/friends-ce-3-group/capstone-pydbcapstone | - | Docker, Python (boto3, Flask, MySQL) |
-| https://github.com/friends-ce-3-group/capstone-pythumbnailscapstone | - | Docker, Python (boto3, PIL, MySQL) |
+| https://github.com/friends-ce-3-group/capstone-pydbcapstone | - | Docker, Python (boto3, MySQL, Flask) |
+| https://github.com/friends-ce-3-group/capstone-pythumbnailscapstone | - | Docker, Python (boto3, MySQL, PIL) |
 | https://github.com/friends-ce-3-group/capstone-rds | RDS MySQL, RDS Proxy, KMS | - |
 | https://github.com/friends-ce-3-group/capstone-cards-delivery | EventBridge, Lambda, SES | Python |
 | https://github.com/friends-ce-3-group/capstone-monitoring | CloudWatch | Grafana | 
