@@ -245,7 +245,7 @@ The project timeline was split into three sprints. The focus of the first sprint
 
 A three-tier web application for a greeting card website was designed, developed and deployed in this project. The team implemented the application code for the website presentation and the database and data storage interface application layers, the IaC code for the AWS infrastructure components needed to support the application, the monitoring and alarms components required for observing the health of the entire system while in operation, and the code scanning tools that help us to measure and improve system availability and resilience.
 
-The microservice architecture facilitated loose coupling between the infrastructure components. On this foundation the team was able to concurrently implement separate application and infrastructure components in multiple repositories while minimising the problem of merge conflicts.
+The microservice architecture facilitated loose coupling between the infrastructure components. On this foundation the team was able to concurrently implement multiple application and infrastructure components in separate repositories while minimising the problem of merge conflicts.
 
 A project management tool was used for planning and issue tracking for our development and administrative tasks.
 
