@@ -231,13 +231,13 @@ Monitoring includes metrics, text logging, structured event logging, distributed
 
 |   | <img src="images/image-cloudwatch-icon.png" width="100"> | <img src="images/image-grafana-icon.png" width="50"> |
 | - | ------------------------------------- | ---------------------------------- |
-| Multi-Cloud Integration | Only on AWS | Multi-Platform |
-| Installation            | Built-in in AWS console | Requires Installation |
-| Cost                    | Pay as you use | Free & Paid Tier |
-| Data                    | No need to import data | Need to Connect to Data Sources |
+| Multi-Cloud Integration | Only on AWS | Multi-platform |
+| Installation            | Built-in in AWS console | Requires installation |
+| Cost                    | Pay as you use | Free & paid tier |
+| Data                    | No need to import data | Need to connect to data sources |
 | Alerts & Notification   | Can easily create multiple alarms | Need to add & configure notification channel |
 | Metrics Management      | All the metrics are read | Stored in a time-series database (TSDB), only a small percentage of data is read. |
-| Dashboard               | Limited Features  | Better UI and Experience (but with more complexity) |
+| Dashboard               | Limited Features  | Better UI and experience, but with more complexity |
 
 
 ## SRE Aspect 4: Alarms (Emails & Slack)
