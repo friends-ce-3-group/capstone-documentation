@@ -64,7 +64,7 @@ For real-time alerts, Cloudwatch Alarms are also enabled on the entire infrastru
 ## Repository and Technology Stack
 To implement our architecture, we have logically grouped various infrastructure components into their code repository. This is to allow the decoupling of the infrastructure components to enable unimpeded development of each section of the infrastructure. Each group of infrastructure components can be deployed or torn down without impacting other parts of the infrastructure. For example, The database resource contains data that should persist even though other application resources can be torn down. Another example is that the infrastructure components that support image upload is unrelated to the components responsible for card delivery, and both can be deployed and torn down separately.
 
-The entire IaC and application code reside in 12 GitHub repositories.
+The entire IaC and application code reside in twelve GitHub repositories.
 
 We use Terraform as the primary Infrastructure as Code (IaC) tool, Github for code storage and version control, and GitHub Actions for continuous integration and deployment. The majority of the application's resources are set up via Terraform to create a controlled version of our infrastructure and to aid in re-deployment in another region in the event of disaster recovery.
 
