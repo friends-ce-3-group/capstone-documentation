@@ -15,7 +15,7 @@ This document is a report for a capstone project done as part of the NTU Cloud I
 - [Site Reliability Engineering Design Considerations](#site-reliability-engineering-design-considerations)
 - [Project Management](#project-management)
 - [Summary](#summary)
-- [Future Improvements and Enhancements](#future-improvements-and-enhancements)
+- [Future Work](#future-work)
 - [Appendix](#Appendix)
 
 ## Company Profile - The GoodGreets Company
@@ -283,7 +283,7 @@ The microservice architecture encouraged loose coupling between the infrastructu
 
 A project management tool was used for planning and issue tracking for our development and administrative tasks.
 
-## Future Improvements and Enhancements
+## Future Work
 
 The improvements that we would like to make to the current implementation of the application are:
 
