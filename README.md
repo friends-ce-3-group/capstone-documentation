@@ -1,7 +1,7 @@
 ## Introduction
 This document is a report for a capstone project done as part of the NTU Cloud Infrastructure Engineering (Cohort 3) SCTP program. The theme of the project is Site Reliability Engineering (SRE). The development team implemented a 3-tier web application and its infrastructure along with monitoring dashboards, metrics, alarms, and application logging that are central to SRE activities.
 
-## Team Members
+## Project Team
 - Lim Tuang Yong Justin
 - Low Chee Meng 
 - Tang Kwong Hoong
