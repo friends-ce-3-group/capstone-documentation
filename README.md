@@ -161,7 +161,7 @@ graph TB
 
 <img src="images/image-ecs-rds-security-group.png" width="250">
 
-Security Groups are used throughout the infrastructure to protect resources from direct access. The RDS only allows inbound traffic from the security group of the ECS tasks to ensure that only ECS tasks can make connections to the database. The ECS service which contains the ECS tasks only allows inbound traffic from the Application Load Balancer (ALB). 
+Security Groups are used throughout the infrastructure to protect resources from direct access. The RDS only allows inbound traffic from the security group of the ECS tasks to ensure that only ECS tasks can make connections to the database. The ECS service which contains the ECS tasks only allows inbound traffic from the ALB. 
 
 
 <img src="images/image-cloudfront-security-groups.png" width="250">
