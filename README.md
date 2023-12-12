@@ -51,22 +51,22 @@ Image 2: Solution Architecture
 
 - When a user accesses the website, the user is served with static website files stored in an AWS S3 bucket. S3 static website hosting is used as a web server. The website will make a JSON API call to get a list of card designs that contain the image source links. These image source links are stored in the AWS RDS database. The website will use these image source links to query the S3 bucket to get the images.
 
-- The JSON API calls are fronted by an AWS Application Load Balancer (ALB) which contains a target group consisting of AWS ECS tasks. These ECS tasks hold the logic for the website's Card CRUD services (i.e. Create, Read, Update, and Delete cards). These ECS tasks sit within an ECS cluster that has AutoScaling enabled. The AutoScaling policy is set to scale the task count based on the CPU and Memory utilization of the cluster. The Card CRUD services interact with an AWS RDS MySql Database via an RDS Proxy to get data.
+- The JSON API calls are fronted by an AWS Application Load Balancer (ALB) that forwards the traffic to a target group consisting of AWS ECS tasks. These ECS tasks hold the logic for the website's Card CRUD services (i.e. Create, Read, Update, and Delete cards). These ECS tasks sit within an ECS cluster that has Auto-Scaling enabled. The Auto-Scaling policy is set to scale the task count based on the CPU and Memory utilization of the cluster. The Card CRUD services interact with an AWS RDS MySql Database via an RDS Proxy to get data.
 
-- On the website, the user could upload an image as the card design. When this function is called, a PUT request is issued into AWS API Gateway which proxies the S3 images bucket. AWS EventBridge is enabled on this S3 bucket to issue event notifications (i.e.S3 Object Created event). An ECS ephemeral task detects this event and resizes this image into a thumbnail. Thumbnails are used in the card catalog images, while actual images are used for the card sent to the recipient.
+- On the website, the user may upload an image as the card design. When this function is called, a PUT request is issued to AWS API Gateway which proxies the S3 images bucket. AWS EventBridge is enabled on this S3 bucket to issue event notifications (i.e.S3 Object Created event). An ECS ephemeral task detects this event and resizes this image into a thumbnail. The thumbnails of the cards are displayed on the website, while the full sized images are sent to the recipient.
 
-- Once a card is created, the ECS task will create a cron job using AWS EventBridge Scheduler. On the scheduled date and time, this schedular will call an AWS Lambda function, passing it the recipient name, email, and image path. This information will be used by the AWS Lambda function to query into the S3 images bucket to fetch the image and create an email. The email will be passed into AWS SNS and SES to be sent to the recipient.
+- Once a card is created, the ECS task will create a cron job using the AWS EventBridge Scheduler. On the scheduled date and time, this scheduler will call an AWS Lambda function, passing it the recipient name, email, and image path. This information will be used by the AWS Lambda function to query into the S3 images bucket to fetch the image and create an email. The email will be passed into AWS SNS and SES to be sent to the recipient.
 
-- Cloudwatch metrics and logging are enabled on all the AWS resources where available. The metrics are exposed into dashboards for trend and real-time monitoring. The dashboarding tools used are AWS Cloudwatch Dashboard and AWS-managed Grafana. Dashboard views are split into sections to cater to the interests of different groups (e.g. Management, Developers, Security).
+- Cloudwatch metrics and logging are enabled on all the AWS resources where available. The metrics are exposed into dashboards for trend and real-time monitoring. The dashboarding tools used are AWS Cloudwatch Dashboards and AWS Managed Grafana. Dashboard views are split into sections, namely Management, Developers, and Security sections, to cater to the interests of different stackholders.
 
 - For real-time alerts, Cloudwatch Alarms are also enabled on the entire infrastructure. Alerts are channelled into AWS SNS topics which send emails and Slack group alerts. 
 
 ## Repository and Technology Stack
-To implement our architecture, we have logically grouped various infrastructure components into their code repository. This is to allow the decoupling of the infrastructure components to enable unimpeded development of each section of the infrastructure. Each group of infrastructure components could be deployed or teardown without impacting other parts of the infrastructure. (For example, The database resource contains data that should persist even though other application resources can be tear-down. Infrastructure that supports image upload is unrelated to the infrastructure related to card delivery, and both can be deployed/teardown separately.)
+To implement our architecture, we have logically grouped various infrastructure components into their code repository. This is to allow the decoupling of the infrastructure components to enable unimpeded development of each section of the infrastructure. Each group of infrastructure components can be deployed or torn down without impacting other parts of the infrastructure. For example, The database resource contains data that should persist even though other application resources can be torn down. Anothe example is that the infrastructure components that support image upload is unrelated to the components responsible for card delivery, and both can be deployed and torn down separately.
 
-In total, there are 12 code repositories used to manage the application infrastructure and code.
+The entire IaC and application code reside in 12 GitHub repositories.
 
-**Github** is the version control system used for our code repository and **Terraform** is the Infrastructure as Code (IaC) tool used to deploy our AWS infrastructure components via **Github Actions**. The majority of the application's resources are set up via Terraform to create a controlled version of our infrastructure and to aid in re-deployment in another region in the event of disaster recovery.
+We use Terraform as the primary Infrastructure as Code (IaC) tool, Github for code storage and version control, and GitHub Actions for continuous integration and deployment. The majority of the application's resources are set up via Terraform to create a controlled version of our infrastructure and to aid in re-deployment in another region in the event of disaster recovery.
 
 
 | Repository | AWS Stack | Others |
@@ -161,16 +161,16 @@ graph TB
 
 <img src="images/image-ecs-rds-security-group.png" width="250">
 
-Security Groups are used throughout the infrastructure to protect resources from direct access. The RDS only allows inbound traffic from the security group of the ECS tasks to ensure only ECS tasks can make connections to the database. The ECS service which contains the ECS tasks only allows inbound traffic coming from the Application Load Balancer (ALB). 
+Security Groups are used throughout the infrastructure to protect resources from direct access. The RDS only allows inbound traffic from the security group of the ECS tasks to ensure that only ECS tasks can make connections to the database. The ECS service which contains the ECS tasks only allows inbound traffic from the Application Load Balancer (ALB). 
 
 
 <img src="images/image-cloudfront-security-groups.png" width="250">
 
-AWS CloudFront distribution was set up with the ALB, S3 buckets, and API Gateway resources as the origin. The intention is to only allow access to these resources from CloudFront. For example, S3 buckets should not be public and APIs should only called from CloudFront hostnames. CloudFront also serves as a Content Delivery Network to allow content to be cached at the edge so that end-users can experience faster access to our website content. 
+AWS CloudFront distribution was set up with the ALB, S3 buckets, and API Gateway resources as the origin. The intention is to only allow access to these resources from AWS CloudFront. For example, S3 buckets should not be public and APIs should only called from CloudFront hostnames. CloudFront also serves as a Content Delivery Network to allow content to be cached at the edge so that end-users can experience faster access to our website content. 
 
 
 #### AWS WAF, Shield, and Captcha
-Web Application Firewall (WAF) and standard AWS Shield were set up to protect both the ALB and APIGateway resources. These tools allow us to track network traffic. In particular, the ability to have a geographical view of our visitors, bot detection, allowed/blocked requests and prevent DDoS attacks.
+AWS Web Application Firewall (WAF) and standard AWS Shield were set up to protect both the ALB and API Gateway resources. These tools allow us to track network traffic. Furthermore, it provides a range of features including bot detection, allowed/blocked requests, tracking the geographic locations of the website's visitors and also DDoS attack prevention.
 
 <img src="images/image-aws-captcha.png" width="250">
 
@@ -180,14 +180,14 @@ To prevent bot attacks on our upload images function, AWS Captcha was embedded i
 #### RDS Proxy
 <img src="images/images-rds-proxy.png" width="250">
 
-Assess into the RDS MySQL database is via the RDS Proxy, and only the security group of the ECS service is allowed inbound access into the RDS database. The benefit of using the RDS Proxy is to make the database more scalable and resilient to database failures, reducing failover times (Refer to [AWS RDS Proxy](https://aws.amazon.com/rds/proxy/)). This helps in database availability.
+Access into the RDS MySQL database is via the RDS Proxy, and only the security group of the ECS service is allowed inbound access into the RDS database. The benefit of using the RDS Proxy is to make the database more scalable and resilient to database failures, thereby reducing failover times (Refer to [AWS RDS Proxy](https://aws.amazon.com/rds/proxy/)). This helps to improve database availability.
 
 ## SRE Aspect 2: Availability
 
 #### Disaster Recovery, RTO and RPO
 <img src="images/image-rto-rpo.png" width="700">
 
-Based on AWS Resiliency Hub's assessment, our application and infrastructure should be able to withstand disaster recovery. Both recovery time objective (RTO) and recovery point objective (RPO) are within the threshold timings. **It is worth noting that the majority of AWS resources (including serverless infrastructure) are set up via Terraform**. So bringing back up the infrastructure in another AWS Region is straightforward.
+Based on AWS Resiliency Hub's assessment, our application and infrastructure should be able to withstand disaster recovery. Both the recovery time objective (RTO) and recovery point objective (RPO) are within the threshold timings. **It is worth noting that the majority of AWS resources (including serverless infrastructure) are set up via Terraform**. So bringing back up the infrastructure in another AWS Region is straightforward.
 
 #### Multiple Availabiliy Zones & AutoScaling for ECS Cluster
 
@@ -195,9 +195,9 @@ Based on AWS Resiliency Hub's assessment, our application and infrastructure sho
 | ---------- | --------- | --------- | --------- | --------- |
 | us-west-2a <br> us-west-2b | Target Tracking <br> CPUUtilization @ 80% <br> MemoryUtilization @ 60% | 2 | 4 | 8 | 
 
-Availability Zones (AZ) are physically separate data centers within a region. The ECS cluster is deployed across two AZs to achieve a fault-tolerant architecture because if one AZ experiences issues, such as hardware failures or network problems, the other AZ can continue running the ECS cluster without disruption. If one AZ becomes unhealthy or experiences high traffic, ECS will automatically redirect traffic to healthy instances in other AZs. 
+Availability Zones (AZ) are physically separate data centers within a region. The ECS cluster is deployed across two AZs to achieve a fault-tolerant architecture because if one AZ experiences issues, such as hardware failures or network problems, the other AZs can continue running the ECS cluster without disruption. If one AZ becomes unhealthy or experiences high traffic, ECS will automatically redirect traffic to healthy instances in other AZs. 
 
-Application auto-scaling is also enabled and both CPU and memory utilisation is tracked to spin up additional compute resources when the workload is high, thereby enhancing application responsiveness and availability.
+Application auto-scaling is also enabled and both CPU and memory utilisation are tracked to spin up additional compute resources when the workload is high, thereby enhancing application responsiveness and availability.
 
 
 #### RDS & Replication
@@ -207,13 +207,13 @@ Application auto-scaling is also enabled and both CPU and memory utilisation is 
 | us-west-2a (Primary) <br> us-west-2b (Secondary) | MySQL | AWS KMS | Yes | Yes | Disabled <br> *To be reviewed in future* |
 
 
-A read replica is instantiated to augment the primary RDS instance. This helps to distribute the load and prevents read-intensive queries from impacting the performance of the primary instance. The read replica also provides redundancy for read operations; if the primary instance becomes unavailable, applications can still read from the read replica. It can also serve as a recovery data source when the data in the primary RDS instance is lost. 
+A read replica is deployed to augment the primary RDS instance. Its purpose is to distribute the load and prevent read-intensive queries from degrading the performance of the primary instance. The read replica also provides redundancy for read operations; if the primary instance becomes unavailable, applications can still read from the read replica. It also serves as a recovery data source when the data in the primary RDS instance is lost. 
 
 ## SRE Aspect 3: Monitoring Dashboard (Cloudwatch & Grafana)
 
 <img src="images/image-monitoring.png" width="250">
 
-Monitoring includes metrics, text logging, structured event logging, distributed tracing and event introspection. The application uses four AWS CloudWatch services, mainly CloudWatch Metrics, CloudWatch Logs, CloudWatch Alarms, and CloudWatch Dashboard to conduct monitoring. We also set up Grafana dashboards to compare and contrast the graphical and configuration aspects of both tools.
+Monitoring includes metrics, text logging, structured event logging, distributed tracing and event introspection. The application uses four AWS CloudWatch services, mainly CloudWatch Metrics, Logs, Alarms, and Dashboards to conduct monitoring. We also set up Grafana dashboards to compare and contrast the graphical and configuration aspects of both tools.
 
 | Type | Link |
 | ---- | ---- |
@@ -243,11 +243,11 @@ Monitoring includes metrics, text logging, structured event logging, distributed
 ## SRE Aspect 4: Alarms (Emails & Slack)
 <img src="images/images-emails-slack.png" width="250">
 
-The application relies on Cloudwatch metrices and logs for alerts. CloudWatch Alarms are set up to trigger Emails and Slack message alerts in order to provide a real-time updates. Below is a summary of the alarms set up on various resources in the application architecture. More detailed information of the alarms is in this [link](Alarms.md).
+The application relies on Cloudwatch metrics and logs for alerts. CloudWatch Alarms are set up to trigger emails and Slack message alerts in order to provide a real-time updates. Below is a summary of the alarms set up on various resources in the application architecture. More detailed information on the alarms is in this [link](Alarms.md).
 
 | Resource | Count of Alarms | Summary of Alarm Type |
 | ---------- | ---------- | ---------- | 
-| AWS Lambda | 4 | Monitor Lambda function duration, invocation patterns, and memory usage for anomalies. Identify unusual invocation patterns, detect function throttling, and set up alerts for errors. Keep an eye on memory utilization patterns and identify any unusual trends in Lambda function memory usage. | 
+| AWS Lambda | 4 | Monitor Lambda function duration, invocation patterns, and memory usage for anomalies. Identify unusual invocation patterns, detect function throttling, and set up alerts for errors. Monitor memory utilization patterns and identify unusual trends in Lambda function memory usage. | 
 | Elastic Container Service | 1 | Monitor ECS CPU utilization. | 
 | S3 | 6 | Monitor latency of S3 requests | 
 | Application Load Balancer | 6 | Monitor ALB logs for 4xx errors and set up alerts for 5xx errors. Detect elevated 5xx error counts and unhealthy hosts in the ALB. Identify instances of unhealthy hosts and monitor rejected connections. Set up alerts for elevated 5xx counts in ALB targets and detect elevated 4xx counts in ALB logs. | 
@@ -259,7 +259,7 @@ The application relies on Cloudwatch metrices and logs for alerts. CloudWatch Al
 
 ## SRE Aspect 5: Logging
 
-The components of the application resources are configured to write logs into S3. These logs can be viewed in AWS region US-West-2's CloudWatch Logs as indicated in the image below. Logging was essential to help us debug issues when application behavior was not expected.
+The components of the application resources are configured to write logs into S3. These logs can be viewed in AWS region US-West-2's CloudWatch Logs as indicated in the image below. During testing, when the application did not behave as expected, the logs provided essential data that we used for debugging.
 
 <img src="images/image-cloudwatch-log-group.png" width="400">
 
@@ -267,19 +267,19 @@ The components of the application resources are configured to write logs into S3
 ## SRE Aspect 6: Improving Resiliency (AWS Resiliency Hub)
 <img src="images/image-resilience-hub-improvements.png" width="700">
 
-After the application and infrastructure code were set up, we relied on AWS Resiliency Hub service to conduct assessments on the website's resiliency. We found the assessments useful as they provided us with recommendations such as introducing more alarm types, s3 object versioning, and changes to both Lambda and ECS services configuration. We acted on some of these recommendations and managed to improve our resiliency score from 22/100 to 54/100. **Further changes to the application based on the assessment should be done to increase the resiliency score**.
+After the application and infrastructure code were set up, we made use of AWS Resilience Hub service to conduct assessments on the website's resilience. It provided us with a resilience score and recommendations on how to improve our infrastructure. We found the assessments useful as they provided us with recommendations such as introducing more alarm types, S3 object versioning, and changes to both Lambda and ECS services configuration. We acted on some of these recommendations and improved our resilience score from 22 to 54 out of a maximum score of 100. We intend to make further changes to the application based on the assessment results.
 
 ## Project Management
 
 The team used GitHub Projects as the project planning and management tool. The link to the project boards is [here](https://github.com/orgs/friends-ce-3-group/projects/3).
 
-The project timeline was split into three sprints. The focus of the first sprint was on delivering the application and infrastructure components and on exploring options for monitoring and resilience assessment tools. In the second sprint, we made improvements to the security and availability settings of the infrastructure and began the implementation of monitoring tools. In the third and final sprint, we implemented the resilience assessment tool and finalised the monitoring system. 
+The project timeline was split into three sprints. In the first sprint, the focus was on delivering the application and infrastructure components and on exploring options for monitoring and resilience assessment tools. In the second sprint, we made improvements to the security and availability settings of the infrastructure and began the implementation of monitoring tools. In the third and final sprint, we implemented the resilience assessment tool and finalised the monitoring system. 
 
 ## Summary
 
-A three-tier web application for a greeting card website was designed, developed, and deployed in this project. The team implemented the application code for the website presentation and the database and data storage interface application layers, the IaC code for the AWS infrastructure components needed to support the application, the monitoring and alarms components required for observing the health of the entire system while in operation, and the code scanning tools that help us to measure and improve system availability and resilience.
+A three-tier web application for a greeting card website was designed, developed, and deployed in this project. The team implemented the presentation and application layer code for the website and the backend business logic, the IaC code for the AWS infrastructure components needed to support the application, the monitoring and alarm components for observing the health of the system while in operation, and the code scanning tools that help us to measure and improve system availability and resilience.
 
-The microservice architecture facilitated loose coupling between the infrastructure components. On this foundation, the team was able to concurrently implement multiple application and infrastructure components in separate repositories while minimising the problem of merge conflicts.
+The microservice architecture encouraged loose coupling between the infrastructure components. This allowed the team to concurrently implement multiple application and infrastructure components in separate repositories while minimising the problem of merge conflicts.
 
 A project management tool was used for planning and issue tracking for our development and administrative tasks.
 
