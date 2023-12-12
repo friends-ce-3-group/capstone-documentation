@@ -223,13 +223,13 @@ Monitoring includes metrics, text logging, structured event logging, distributed
 
 #### Images of Application's Monitoring Dashboards
 
-<img src="images/image-cloudwatch-icon.png" width="500">
+<img src="images/image-cloudwatch-dashboard.png" width="500">
 
-<img src="images/image-grafana-icon.png" width="500">
+<img src="images/image-grafana-dashboard.png" width="500">
 
 #### Summary of Differences between Cloudwatch and Grafana Dashboards
 
-|   | <img src="images/image-grafana-dashboard.png" width="50"> | <img src="images/image-grafana-dashboard.png" width="50"> |
+|   | <img src="images/image-grafana-icon.png" width="50"> | <img src="images/image-grafana-icon.png" width="50"> |
 | - | ------------------------------------- | ---------------------------------- |
 | Multi-Cloud Integration | Only on AWS | Multi-Platform |
 | Installation            | Built-in in AWS console | Requires Installation |
