@@ -220,9 +220,14 @@ Monitoring includes metrics, text logging, structured event logging, distributed
 | Cloudwatch Dashboard | [Link](https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#dashboards/dashboard/friends-capstone-summary-dashboard-terraform) |
 | Grafana Dashboard | [Link](https://g-655995145b.grafana-workspace.us-west-2.amazonaws.com/d/R9E5kkNIz/summary?orgId=1) | 
 
-<img src="images/image-cloudwatch-dashboard.png" width="500">
 
-<img src="images/image-grafana-dashboard.png" width="500">
+#### Images of Application's Monitoring Dashboards
+
+<img src="images/image-cloudwatch-icon.png" width="500">
+
+<img src="images/image-grafana-icon.png" width="500">
+
+#### Summary of Differences between Cloudwatch and Grafana Dashboards
 
 |   | <img src="images/image-grafana-dashboard.png" width="50"> | <img src="images/image-grafana-dashboard.png" width="50"> |
 | - | ------------------------------------- | ---------------------------------- |
@@ -233,6 +238,7 @@ Monitoring includes metrics, text logging, structured event logging, distributed
 | Alerts & Notification   | Can easily create multiple alarms | Need to add & configure notification channel |
 | Metrics Management      | All the metrics are read | Stored in a time-series database (TSDB), only a small percentage of data is read. |
 | Dashboard               | Limited Features  | Better UI and Experience (but with more complexity) |
+
 
 
 
