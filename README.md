@@ -259,7 +259,7 @@ The application relies on Cloudwatch metrices and logs for alerts. CloudWatch Al
 
 ## SRE Aspect 5: Logging
 
-The components of the application resources are configured to write logs. These logs are stored in AWS region US-West-2's CloudWatch Logs. Logging was essential to help us debug issues when application behavior was not expected.
+The components of the application resources are configured to write logs into S3. These logs can be viewed in AWS region US-West-2's CloudWatch Logs as indicated in the image below. Logging was essential to help us debug issues when application behavior was not expected.
 
 <img src="images/image-cloudwatch-log-group.png" width="400">
 
