@@ -202,7 +202,7 @@ Application auto-scaling is also enabled and both CPU and memory utilisation are
 
 #### RDS & Replication
 
-| Availability Zones | Type | Encryption | RDS Proxy | Replication | Storage AutoScaling |
+| Availability Zones | Type | Encryption | RDS Proxy | Replication | Storage Auto-Scaling |
 | ---------- | ---------- | ---------- | ---------- | --------- | --------- | 
 | us-west-2a (Primary) <br> us-west-2b (Secondary) | MySQL | AWS KMS | Yes | Yes | Disabled <br> *To be reviewed in future* |
 
