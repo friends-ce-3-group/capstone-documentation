@@ -197,7 +197,7 @@ Based on AWS Resiliency Hub's assessment, our application and infrastructure sho
 
 Availability Zones (AZ) are physically separate data centers within a region. The ECS cluster is deployed across two AZs to achieve a fault-tolerant architecture because if one AZ experiences issues, such as hardware failures or network problems, the other AZs can continue running the ECS cluster without disruption. If one AZ becomes unhealthy or experiences high traffic, ECS will automatically redirect traffic to healthy instances in other AZs. 
 
-Application auto-scaling is also enabled and both CPU and memory utilization are tracked to spin up additional compute resources when the workload is high, thereby enhancing application responsiveness and availability.
+Application auto-scaling is also enabled and both CPU and memory utilization are tracked to provision additional compute resources when the workload is high, thereby enhancing application responsiveness and availability.
 
 
 #### RDS & Replication
