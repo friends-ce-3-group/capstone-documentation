@@ -232,12 +232,12 @@ Monitoring includes metrics, text logging, structured event logging, distributed
 |   | <img src="images/image-cloudwatch-icon.png" width="100"> | <img src="images/image-grafana-icon.png" width="50"> |
 | - | ------------------------------------- | ---------------------------------- |
 | Multi-Cloud Integration | Only on AWS | Multi-platform |
-| Installation            | Built-in in AWS console | Requires installation |
+| Installation            | Ready to use in AWS Management Console | Requires installation (if running Prometheus server on EC2) |
 | Cost                    | Pay as you use | Free & paid tier |
-| Data                    | No need to import data | Need to connect to data sources |
-| Alerts & Notification   | Can easily create multiple alarms | Need to add & configure notification channel |
-| Metrics Management      | All the metrics are read | Stored in a time-series database (TSDB), only a small percentage of data is read. |
-| Dashboard               | Limited Features  | Better UI and experience, but with more complexity |
+| Data                    | Seamless integration with CloudWatch Logs | Need to connect to data sources |
+| Alerts & Notification   | Can easily create multiple alarms | Need to add & configure notification channels |
+| Metrics Management      | All metrics are read | Only filtered data is read and stored in a time-series database (TSDB) |
+| Dashboard               | Ease of use | More complex to use, but provides superior visuals compared to CloudWatch dashboards |
 
 
 ## SRE Aspect 4: Alarms (Emails & Slack)
