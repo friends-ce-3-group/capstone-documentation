@@ -87,7 +87,7 @@ We use Terraform as the primary Infrastructure as Code (IaC) tool, Github for co
 
 #### Dependency Graph Between Repositories
 
-The dependencies between the application and infrastructure components implemented in the separate repositories are as shown in the dependency graph below.
+The dependencies between the application and infrastructure components implemented in the separate repositories are as shown in the dependency graph below, where the "depends on" and "data from" relationships indicate resource deployment and logging data interdependencies respectively.
 
 ```mermaid
 graph TB
