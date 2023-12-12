@@ -213,7 +213,7 @@ A read replica is instantiated to augment the primary RDS instance. This helps t
 
 <img src="images/image-monitoring.png" width="250">
 
-Monitoring includes metrics, text logging, structured event logging, distributed tracing, and event introspection. The application uses 4 AWS Cloudwatch services, mainly CloudWatch Metrics, Cloudwatch Logs, CloudWatch Alarms, and CloudWatch Dashboard to conduct realtime monitoring. In addition to Cloudwatch Dashboard, our team has also experimented with Grafana Dashboards to compare and contrast both tools.
+Monitoring includes metrics, text logging, structured event logging, distributed tracing and event introspection. The application uses four AWS CloudWatch services, mainly CloudWatch Metrics, CloudWatch Logs, CloudWatch Alarms, and CloudWatch Dashboard to conduct monitoring. **As a value add, our team also experimented with Grafana Dashboard, in addition to CloudWatch Dashboard, to compare and contrast the graphical and configuration aspects of both tools**.
 
 | Type | Link |
 | ---- | ---- |
@@ -229,7 +229,7 @@ Monitoring includes metrics, text logging, structured event logging, distributed
 
 #### Summary of Differences between Cloudwatch and Grafana Dashboards
 
-|   | <img src="images/image-grafana-icon.png" width="50"> | <img src="images/image-grafana-icon.png" width="50"> |
+|   | <img src="images/image-cloudwatch-icon.png" width="50"> | <img src="images/image-grafana-icon.png" width="50"> |
 | - | ------------------------------------- | ---------------------------------- |
 | Multi-Cloud Integration | Only on AWS | Multi-Platform |
 | Installation            | Built-in in AWS console | Requires Installation |
