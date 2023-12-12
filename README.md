@@ -240,10 +240,6 @@ Monitoring includes metrics, text logging, structured event logging, distributed
 | Dashboard               | Limited Features  | Better UI and Experience (but with more complexity) |
 
 
-
-
-
-
 ## SRE Aspect 4: Alarms (Emails & Slack)
 <img src="images/images-emails-slack.png" width="250">
 
@@ -262,7 +258,12 @@ The application relies on Cloudwatch metrices and logs for alerts. CloudWatch Al
 
 
 ## SRE Aspect 5: Logging
-[TODO]
+
+The components of the application resources are configured to write logs. These logs are stored in AWS region US-West-2's CloudWatch Logs. Logging was essential to help us debug issues when application behavior was not expected.
+
+<img src="image-cloudwatch-log-group.png" width="400">
+
+
 ## SRE Aspect 6: Improving Resiliency (AWS Resiliency Hub)
 <img src="images/image-resilience-hub-improvements.png" width="700">
 
