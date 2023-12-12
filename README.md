@@ -233,9 +233,9 @@ Monitoring includes metrics, text logging, structured event logging, distributed
 | - | ------------------------------------- | ---------------------------------- |
 | Multi-Cloud Integration | Only on AWS | Multi-platform |
 | Installation            | Ready to use in AWS Management Console | Requires installation (if running Prometheus server on EC2) |
-| Cost                    | Pay as you use | Free & paid tier |
-| Data                    | Seamless integration with CloudWatch Logs | Need to connect to data sources |
-| Alerts & Notification   | Can easily create multiple alarms | Need to add & configure notification channels |
+| Cost                    | Pay as you use | Free and paid tier |
+| Data                    | Seamless integration with CloudWatch Logs | Data sources have to be manually connected |
+| Alerts & Notification   | Alarms are easily created | Notification channels have to be added and configured |
 | Metrics Management      | All metrics are read | Only filtered data is read and stored in a time-series database (TSDB) |
 | Dashboard               | Ease of use | More complex to use, but provides superior visuals compared to CloudWatch dashboards |
 
