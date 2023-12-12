@@ -1,5 +1,5 @@
 ## Introduction
-This project is part of the NTU Cloud Infrastructure Engineering (SCTP) Cohort 3 end-of-program capstone project. The theme of this project is Site Reliability Engineering (SRE). In this project, we showcase a monitoring solution on our GoodGreets website. Aside from the application, we showcase monitoring dashboards, metrics, alarms, and application logging that represent SRE.
+This document is a report for a capstone project done as part of the NTU Cloud Infrastructure Engineering (Cohort 3) SCTP program. The theme of the project is Site Reliability Engineering (SRE). The development team implemented a 3-tier web application and its infrastructure along with monitoring dashboards, metrics, alarms, and application logging that are central to SRE activities.
 
 ## Team Members
 - Lim Tuang Yong Justin
