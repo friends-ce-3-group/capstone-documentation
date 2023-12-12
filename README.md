@@ -170,7 +170,7 @@ AWS CloudFront distribution was set up with the ALB, S3 buckets, and API Gateway
 
 
 #### AWS WAF, Shield, and Captcha
-AWS Web Application Firewall (WAF) and standard AWS Shield were set up to protect both the ALB and API Gateway resources. These tools allow us to track network traffic. Furthermore, it provides a range of features including bot detection, allowed/blocked requests, tracking the geographic locations of the website's visitors and also DDoS attack prevention.
+AWS Web Application Firewall (WAF) and standard AWS Shield were set up to protect both the ALB and API Gateway resources. These tools allow us to track network traffic. Furthermore, it provides a range of features including bot detection, rule definitions to block or allow web requests, tracking the geographic locations of the website's visitors and also preventing DDoS attacks.
 
 <img src="images/image-aws-captcha.png" width="250">
 
