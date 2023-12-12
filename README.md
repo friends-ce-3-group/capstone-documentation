@@ -215,9 +215,25 @@ A read replica is instantiated to augment the primary RDS instance. This helps t
 
 Monitoring includes metrics, text logging, structured event logging, distributed tracing, and event introspection. The application uses 4 AWS Cloudwatch services, mainly CloudWatch Metrics, Cloudwatch Logs, CloudWatch Alarms, and CloudWatch Dashboard to conduct realtime monitoring. In addition to Cloudwatch Dashboard, our team has also experimented with Grafana Dashboards to compare and contrast both tools.
 
-<img src="images/image-grafana-dashboard.png" width="500">
+| Type | Link |
+| ---- | ---- |
+| Cloudwatch Dashboard | [Link](https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#dashboards/dashboard/friends-capstone-summary-dashboard-terraform) |
+| Grafana Dashboard | [Link](https://g-655995145b.grafana-workspace.us-west-2.amazonaws.com/d/R9E5kkNIz/summary?orgId=1) | 
 
 <img src="images/image-cloudwatch-dashboard.png" width="500">
+
+<img src="images/image-grafana-dashboard.png" width="500">
+
+|   | <img src="images/image-grafana-dashboard.png" width="50"> | <img src="images/image-grafana-dashboard.png" width="50"> |
+| - | ------------------------------------- | ---------------------------------- |
+| Multi-Cloud Integration | Only on AWS | Multi-Platform |
+| Installation            | Built-in in AWS console | Requires Installation |
+| Cost                    | Pay as you use | Free & Paid Tier |
+| Data                    | No need to import data | Need to Connect to Data Sources |
+| Alerts & Notification   | Can easily create multiple alarms | Need to add & configure notification channel |
+| Metrics Management      | All the metrics are read | Stored in a time-series database (TSDB), only a small percentage of data is read. |
+| Dashboard               | Limited Features  | Better UI and Experience (but with more complexity) |
+
 
 
 
