@@ -20,7 +20,7 @@ This project is part of the NTU Cloud Infrastructure Engineering (SCTP) Cohort 3
 
 ## Company Profile - The GoodGreets Company
 
-Established in 2023, The GoodGreets Company was set up to bring joy to the hearts of family, friends, and colleagues with the simple act of sending a card. A user who wishes to send a card, can access the website and select a card design from a list of pre-loaded pictures. The user fills in the details of the recipient and schedules a date for the card to be sent. Thereafter, the user will be given a link to share for others to sign the card. The user could also upload a preferred picture of theirs to be used as the card design.
+Established in 2023, The GoodGreets Company was set up to bring joy to the hearts of family, friends, and colleagues with the simple act of sending a card. A user who wishes to send a card, can access the website and select a card design from a list of pre-loaded pictures. The user fills in the details of the recipient and schedules a date for the card to be sent. Thereafter, the user is given a link to share with others to sign the card. The user can also upload a preferred picture of theirs to be used as the card design.
 
 ## Website and Features
 | URL |
