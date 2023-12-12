@@ -191,7 +191,7 @@ Based on AWS Resiliency Hub's assessment, our application and infrastructure sho
 
 #### Multiple Availabiliy Zones & Auto-Scaling for ECS Cluster
 
-| Availability Zones | Auto Scaling Policy | MinTasks | DesiredTasks | MaxTasks | 
+| Availability Zones | Auto-Scaling Policy | MinTasks | DesiredTasks | MaxTasks | 
 | ---------- | --------- | --------- | --------- | --------- |
 | us-west-2a <br> us-west-2b | Target Tracking <br> CPUUtilization @ 80% <br> MemoryUtilization @ 60% | 2 | 4 | 8 | 
 
