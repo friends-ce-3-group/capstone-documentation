@@ -261,7 +261,7 @@ The application relies on Cloudwatch metrices and logs for alerts. CloudWatch Al
 
 The components of the application resources are configured to write logs. These logs are stored in AWS region US-West-2's CloudWatch Logs. Logging was essential to help us debug issues when application behavior was not expected.
 
-<img src="image-cloudwatch-log-group.png" width="400">
+<img src="images/image-cloudwatch-log-group.png" width="400">
 
 
 ## SRE Aspect 6: Improving Resiliency (AWS Resiliency Hub)
@@ -296,6 +296,14 @@ The improvements that we would like to make to the current implementation of the
 - Implement a multi-environment CD workflow with proper controls.
 
 ## Appendix
-[TODO]
+
 #### Links for Presentation
-[TODO]
+| Page | Link |
+| ---- | ---- |
+| 1: Webpage | [Link](https://goodgreets.sctp-sandbox.com/) |
+| 2: Solution Architecture | [Link](https://raw.githubusercontent.com/friends-ce-3-group/capstone-documentation/main/image-solution-architecture.png) |
+| 3: CloudWatch Dashboard | [Link](https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#dashboards/dashboard/friends-capstone-summary-dashboard-terraform) |
+| 4: Grafana Dashboard | [Link](https://g-655995145b.grafana-workspace.us-west-2.amazonaws.com/d/R9E5kkNIz/summary?orgId=1) |
+| 5: CloudWatch vs Grafana | [Link](ComparisonCWvsGrafana.md) |
+| 6: CloudWatch Alarms | [Link](Alarms.md) |
+| 7: Resilience Hub | [Link](https://us-west-2.console.aws.amazon.com/resiliencehub/home?region=us-west-2#/application/friends-capstone-resilience-hub/assessment-reports) |
