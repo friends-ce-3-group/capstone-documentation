@@ -57,7 +57,7 @@ On the website, the user may upload an image as the card design. When this funct
 
 Once a card is created, the ECS task will create a cron job using the AWS EventBridge Scheduler. On the scheduled date and time, this scheduler will call an AWS Lambda function, passing it the recipient name, email, and image path. This information will be used by the AWS Lambda function to query into the S3 images bucket to fetch the image and create an email. The email will be passed into AWS SNS and SES to be sent to the recipient.
 
-Cloudwatch metrics and logging are enabled on all the AWS resources where available. The metrics are exposed into dashboards for trend and real-time monitoring. The dashboarding tools used are AWS Cloudwatch Dashboards and AWS Managed Grafana. Dashboard views are split into tabs, namely, the Management, Developers, and Security sections, to address the requirements of different stackholders.
+Cloudwatch metrics and logging are enabled on all the AWS resources where available. The metrics are exposed into dashboards for trend and real-time monitoring. The dashboarding tools used are AWS Cloudwatch Dashboards and AWS Managed Grafana (AMG). Dashboard views are split into tabs, namely, the Management, Developers, and Security sections, to address the requirements of different stackholders.
 
 For real-time alerts, Cloudwatch Alarms are also enabled on the entire infrastructure. Alerts are channelled into AWS SNS topics which then trigger email and Slack group alerts. 
 
