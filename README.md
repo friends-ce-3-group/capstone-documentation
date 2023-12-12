@@ -32,7 +32,7 @@ Established in 2023, The GoodGreets Company was set up to bring joy to the heart
 Image 1: Website Homepage
 
 #### Feature 1: Card Image Upload
-Users may wish to use their images as the card design. An image can be selected from the user's device and the user is required to complete a Captcha image before submitting the image.
+Users may prefer to use their own images over the stock images provided by the website. In this case, an image can be selected from the user's device and the user is required to complete a Captcha image before submitting the image.
 
 <img src="images/image-upload-function.png" width="200">
 
