@@ -247,13 +247,13 @@ The application relies on Cloudwatch metrics and logs for alerts. CloudWatch Ala
 
 | Resource | Count of Alarms | Summary of Alarm Type |
 | ---------- | ---------- | ---------- | 
-| AWS Lambda | 4 | Monitor Lambda function duration, invocation patterns, and memory usage for anomalies. Identify unusual invocation patterns, detect function throttling, and set up alerts for errors. Monitor memory utilization patterns and identify unusual trends in Lambda function memory usage. | 
-| Elastic Container Service | 1 | Monitor ECS CPU utilization. | 
+| AWS Lambda | 4 | Monitor Lambda function duration, invocation patterns, and memory usage for anomalies. Identify unusual invocation patterns, detect function throttling, and set up alerts for errors. Monitor memory utilization patterns and identify unusual trends in Lambda function memory usage | 
+| Elastic Container Service | 1 | Monitor ECS CPU utilization | 
 | S3 | 6 | Monitor latency of S3 requests | 
-| Application Load Balancer | 6 | Monitor ALB logs for 4xx errors and set up alerts for 5xx errors. Detect elevated 5xx error counts and unhealthy hosts in the ALB. Identify instances of unhealthy hosts and monitor rejected connections. Set up alerts for elevated 5xx counts in ALB targets and detect elevated 4xx counts in ALB logs. | 
-| RDS | 6 | Monitor RDS CPU utilization. | 
-| WAF | 1 | Alert on elevated blocked requests in WAF. | 
-| NAT Gateway | 4 | Set up alerts for NAT Gateway port allocation errors, monitor the successful connection percentage, and detect any packet drops in the NAT Gateway. | 
+| Application Load Balancer | 6 | Monitor ALB logs for 4xx errors and set up alerts for 5xx errors. Detect elevated 5xx error counts and unhealthy hosts in the ALB. Identify instances of unhealthy hosts and monitor rejected connections. Set up alerts for elevated 5xx counts in ALB targets and detect elevated 4xx counts in ALB logs | 
+| RDS | 6 | Monitor RDS CPU utilization | 
+| WAF | 1 | Alert on elevated blocked requests in WAF | 
+| NAT Gateway | 4 | Set up alerts for NAT Gateway port allocation errors, monitor the successful connection percentage, and detect any packet drops in the NAT Gateway | 
 
 
 
