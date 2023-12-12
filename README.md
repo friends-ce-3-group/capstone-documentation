@@ -189,7 +189,7 @@ Access into the RDS MySQL database is via the RDS Proxy, and only the security g
 
 Based on AWS Resiliency Hub's assessment, our application and infrastructure should be able to withstand disaster recovery. Both the recovery time objective (RTO) and recovery point objective (RPO) are within the threshold timings. **It is worth noting that the majority of AWS resources (including serverless infrastructure) are set up via Terraform**. So bringing back up the infrastructure in another AWS Region is straightforward.
 
-#### Multiple Availabiliy Zones & AutoScaling for ECS Cluster
+#### Multiple Availabiliy Zones & Auto-Scaling for ECS Cluster
 
 | Availability Zones | Auto Scaling Policy | MinTasks | DesiredTasks | MaxTasks | 
 | ---------- | --------- | --------- | --------- | --------- |
