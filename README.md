@@ -300,10 +300,10 @@ The improvements that we would like to make to the current implementation of the
 #### Links for Presentation
 | Page | Link |
 | ---- | ---- |
-| 1: Webpage | [Link](https://goodgreets.sctp-sandbox.com/) |
-| 2: Solution Architecture | [Link](https://raw.githubusercontent.com/friends-ce-3-group/capstone-documentation/main/image-solution-architecture.png) |
-| 3: CloudWatch Dashboard | [Link](https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#dashboards/dashboard/friends-capstone-summary-dashboard-terraform) |
-| 4: Grafana Dashboard | [Link](https://g-655995145b.grafana-workspace.us-west-2.amazonaws.com/d/R9E5kkNIz/summary?orgId=1) |
-| 5: CloudWatch vs Grafana | [Link](ComparisonCWvsGrafana.md) |
-| 6: CloudWatch Alarms | [Link](Alarms.md) |
-| 7: Resilience Hub | [Link](https://us-west-2.console.aws.amazon.com/resiliencehub/home?region=us-west-2#/application/friends-capstone-resilience-hub/assessment-reports) |
+| 1: Webpage | [Link](https://goodgreets.sctp-sandbox.com/){:target="_blank"} |
+| 2: Solution Architecture | [Link](https://raw.githubusercontent.com/friends-ce-3-group/capstone-documentation/main/image-solution-architecture.png){:target="_blank"} |
+| 3: CloudWatch Dashboard | [Link](https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#dashboards/dashboard/friends-capstone-summary-dashboard-terraform){:target="_blank"} |
+| 4: Grafana Dashboard | [Link](https://g-655995145b.grafana-workspace.us-west-2.amazonaws.com/d/R9E5kkNIz/summary?orgId=1){:target="_blank"} |
+| 5: CloudWatch vs Grafana | [Link](ComparisonCWvsGrafana.md){:target="_blank"} |
+| 6: CloudWatch Alarms | [Link](Alarms.md){:target="_blank"} |
+| 7: Resilience Hub | [Link](https://us-west-2.console.aws.amazon.com/resiliencehub/home?region=us-west-2#/application/friends-capstone-resilience-hub/assessment-reports){:target="_blank"} |
