@@ -287,7 +287,7 @@ A project management tool was used for planning and issue tracking for our devel
 
 The improvements that we would like to make to the current implementation of the application are:
 
-- Implement the modifications to the infrastructure as recommended by AWS Resiliency Hub.
+- Implement the modifications to the infrastructure recommended by AWS Resiliency Hub.
 - Address the vulnerabilities found in the container images by the ECR scanning service.
 - Switch from RDS to DynamoDB for database services.
 - Switch from ECS standalone task to AWS Lambda for the thumbnail conversion service.
