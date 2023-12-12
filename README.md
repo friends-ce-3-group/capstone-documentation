@@ -62,7 +62,7 @@ Image 2: Solution Architecture
 - For real-time alerts, Cloudwatch Alarms are also enabled on the entire infrastructure. Alerts are channelled into AWS SNS topics which send emails and Slack group alerts. 
 
 ## Repository and Technology Stack
-To implement our architecture, we have logically grouped various infrastructure components into their code repository. This is to allow the decoupling of the infrastructure components to enable unimpeded development of each section of the infrastructure. Each group of infrastructure components can be deployed or torn down without impacting other parts of the infrastructure. For example, The database resource contains data that should persist even though other application resources can be torn down. Anothe example is that the infrastructure components that support image upload is unrelated to the components responsible for card delivery, and both can be deployed and torn down separately.
+To implement our architecture, we have logically grouped various infrastructure components into their code repository. This is to allow the decoupling of the infrastructure components to enable unimpeded development of each section of the infrastructure. Each group of infrastructure components can be deployed or torn down without impacting other parts of the infrastructure. For example, The database resource contains data that should persist even though other application resources can be torn down. Another example is that the infrastructure components that support image upload is unrelated to the components responsible for card delivery, and both can be deployed and torn down separately.
 
 The entire IaC and application code reside in 12 GitHub repositories.
 
