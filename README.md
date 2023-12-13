@@ -64,10 +64,9 @@ For real-time alerts, Cloudwatch Alarms are also enabled on the entire infrastru
 ## Repository and Technology Stack
 To implement our architecture, we have logically grouped various infrastructure components into their code repository. This is to allow the decoupling of the infrastructure components to enable unimpeded development of each section of the infrastructure. Each group of infrastructure components can be deployed or torn down without impacting other parts of the infrastructure. For example, The database resource contains data that should persist even though other application resources can be torn down. Another example is that the infrastructure components that support image upload is unrelated to the components responsible for card delivery, and both can be deployed and torn down separately.
 
-The entire IaC and application code reside in twelve GitHub repositories.
-
 We use Terraform as the primary Infrastructure as Code (IaC) tool, Github for code storage and version control, and GitHub Actions for continuous integration and deployment. The majority of the application's resources are set up via Terraform to create a controlled version of our infrastructure and to aid in re-deployment in another region in the event of disaster recovery.
 
+The entire IaC and application code reside in twelve GitHub repositories.
 
 | Repository | AWS Stack | Others |
 | ---------- | --------- | --------- |
@@ -277,7 +276,7 @@ The project timeline was split into three sprints. In the first sprint, the focu
 
 ## Summary
 
-A three-tier web application for a greeting card website was designed, developed, and deployed in this project. The team implemented the presentation and application layer code for the website and the backend business logic, the IaC code for the AWS infrastructure components needed to support the application, the monitoring and alarm components for observing the health of the system while in operation, and the code scanning tools that help us to measure and improve system availability and resilience.
+A 3-tier web application for a greeting card website was designed, developed, and deployed in this project. The team implemented the presentation and application layer code for the website and the backend business logic, the IaC code for the AWS infrastructure components needed to support the application, the monitoring and alarm components for observing the health of the system while in operation, and the code scanning tools that help us to measure and improve system availability and resilience.
 
 The microservice architecture encouraged loose coupling between the infrastructure components. This allowed the team to concurrently implement multiple application and infrastructure components in separate repositories while minimising the problem of merge conflicts.
 
