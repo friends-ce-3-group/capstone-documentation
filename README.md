@@ -187,7 +187,7 @@ Access into the RDS MySQL database is via the RDS Proxy, and only the security g
 #### Disaster Recovery, RTO and RPO
 <img src="images/image-rto-rpo.png" width="700">
 
-Based on AWS Resiliency Hub's assessment, our application and infrastructure should be able to withstand disaster recovery. Both the recovery time objective (RTO) and recovery point objective (RPO) are within the threshold timings. **It is worth noting that the majority of AWS resources (including serverless infrastructure) are set up via Terraform**. So bringing back up the infrastructure in another AWS Region is straightforward.
+Based on AWS Resilience Hub's assessment, our application and infrastructure should be able to withstand disaster recovery. Both the recovery time objective (RTO) and recovery point objective (RPO) are within the threshold timings. **It is worth noting that the majority of AWS resources (including serverless infrastructure) are set up via Terraform**. So bringing back up the infrastructure in another AWS Region is straightforward.
 
 #### Multiple Availabiliy Zones & Auto-Scaling for ECS Cluster
 
@@ -264,7 +264,7 @@ The components of the application resources are configured to write logs into S3
 <img src="images/image-cloudwatch-log-group.png" width="400">
 
 
-## SRE Aspect 6: Improving Resiliency (AWS Resiliency Hub)
+## SRE Aspect 6: Improving Resiliency (AWS Resilience Hub)
 <img src="images/image-resilience-hub-improvements.png" width="700">
 
 After the application and infrastructure code were set up, we made use of AWS Resilience Hub service to conduct assessments on the website's resilience. It provided us with a resilience score and recommendations on how to improve our infrastructure. We found the assessments useful as they provided us with recommendations such as introducing more alarm types, S3 object versioning, and changes to both Lambda and ECS services configuration. We acted on some of these recommendations and improved our resilience score from 22 to 54 out of a maximum score of 100. We intend to make further changes to the application based on the assessment results.
@@ -287,7 +287,7 @@ A project management tool was used for planning and issue tracking for our devel
 
 The improvements that we would like to make to the current implementation of the application are:
 
-- Implement the modifications to the infrastructure recommended by AWS Resiliency Hub.
+- Implement the modifications to the infrastructure recommended by AWS Resilience Hub.
 - Address the vulnerabilities found in the container images by the ECR scanning service.
 - Switch from RDS to DynamoDB for database services.
 - Switch from ECS standalone task to AWS Lambda for the thumbnail conversion service.
