@@ -290,6 +290,7 @@ The improvements that we would like to make to the current implementation of the
 - Switch from ECS standalone task to AWS Lambda for the thumbnail conversion service.
 - Make improvements on monitoring metrics and visualisation.
 - Implement application unit testing, security scanning, and static code analysis in continuous integration (CI) workflows.
+- Implement abstractions in the application code regarding usage of cloud provider specific libraries and resources.
 - Implement a multi-environment continuous deployment (CD) workflow with proper controls.
 
 ## Appendix
