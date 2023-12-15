@@ -49,24 +49,22 @@ Once the card is scheduled, an automated cron job will be set up to send the car
 
 Image 2: Solution Architecture
 
-When a user accesses the website, the user is served with static website files stored in an AWS S3 bucket. S3 static website hosting is used as a web server. The website will make a JSON API call to get a list of card designs that contain the image source links. These image source links are stored in the AWS RDS database. The website will use these image source links to query the S3 bucket to get the images.
+When a user accesses the website, the user is served with static website files stored in an AWS S3 bucket. S3 static website hosting is used as a web server. The website will make a JSON API call to get a list of card designs that contain the image source links. These image source links are stored in the AWS RDS database and the website will use them to query the S3 bucket to retrieve the images.
 
-The JSON API calls are fronted by an AWS Application Load Balancer (ALB) that forwards the traffic to a target group consisting of AWS ECS tasks. These ECS tasks provide RDS database access services (i.e. Create, Read, Update, and Delete cards) to the website. These ECS tasks are created within an ECS cluster that has auto-scaling enabled. The auto-scaling policy is set to scale the task count based on the CPU and Memory utilization of the cluster. The Card CRUD services interact with an AWS RDS MySQL Database via an RDS Proxy to get data.
+The JSON API calls are fronted by an AWS Application Load Balancer (ALB) that forwards the traffic to a target group consisting of AWS ECS tasks. These ECS tasks provide RDS database access services (i.e. Create, Read, Update, and Delete cards) to the website and are created within an ECS cluster that has auto-scaling enabled. The auto-scaling policy scales the task count based on the CPU and Memory utilization of the cluster. The Card CRUD services provided by the JSON API interact with an AWS RDS MySQL Database via a RDS Proxy to get data.
 
-On the website, the user may upload an image as the card design. When this function is called, a PUT request is issued to AWS API Gateway which proxies the S3 images bucket. AWS EventBridge is enabled on this S3 bucket to issue event notifications (i.e. a S3 Object Created event). An ECS ephemeral task detects this event and resizes this image into a thumbnail. The thumbnails of the cards are displayed on the website, while the full sized images are sent to the recipient.
+On the website, the user may upload an image as the card design. When this function is called, a PUT request is issued to AWS API Gateway which proxies the S3 images bucket. AWS EventBridge is enabled on this S3 bucket to issue event notifications with a S3 Object Created event. An ECS ephemeral task detects this event and resizes this image into a thumbnail. The thumbnails of the cards are displayed on the website as the sample images, while the cards that are emailed to the target recipients are full sized images.
 
-Once a card is created, the ECS task will create a cron job using the AWS EventBridge Scheduler. On the scheduled date and time, this scheduler will call an AWS Lambda function, passing it the recipient name, email, and image path. This information will be used by the AWS Lambda function to query into the S3 images bucket to fetch the image and create an email. The email will be passed into AWS SNS and SES to be sent to the recipient.
+Once a card is created, the ECS task will create a cron job using the AWS EventBridge Scheduler. On the scheduled date and time, this scheduler will call an AWS Lambda function together with the recipient name, email, and image path in the JSON request. The AWS Lambda function then uses the AWS SDK for Python (Boto3) to retrieve the target card image in the S3 images bucket and create an email to be sent to the recipient using AWS Simple Email Service (SES).
 
-Cloudwatch metrics and logging are enabled on all the AWS resources where available. The metrics are exposed into dashboards for trend and real-time monitoring. The dashboarding tools used are AWS Cloudwatch Dashboards and AWS Managed Grafana (AMG). Dashboard views are split into tabs, namely, the Management, Developers, and Security sections, to address the requirements of different stackholders.
+Cloudwatch metrics and logging are enabled on all the AWS resources where available. The metrics storing current and historical data are exposed for real-time tracking on monitoring dashboards. The dashboarding tools used are AWS Cloudwatch Dashboards and AWS Managed Grafana (AMG). Dashboard views are split into tabs, namely, the Management, Developers, and Security sections, to address the requirements of different stackholders.
 
 For real-time alerts, Cloudwatch Alarms are also enabled on the entire infrastructure. Alerts are channelled into AWS SNS topics which then trigger email and Slack group alerts. 
 
 ## Repository and Technology Stack
-To implement our architecture, we have logically grouped various infrastructure components into their code repository. This is to allow the decoupling of the infrastructure components to enable unimpeded development of each section of the infrastructure. Each group of infrastructure components can be deployed or torn down without impacting other parts of the infrastructure. For example, The database resource contains data that should persist even though other application resources can be torn down. Another example is that the infrastructure components that support image upload is unrelated to the components responsible for card delivery, and both can be deployed and torn down separately.
+To implement our architecture, we have grouped the code for the various application and infrastructure components into twelve separate GitHub repositories. This reinforced the decoupling of the infrastructure components and facilitated unimpeded development of each section of the infrastructure. Each group of infrastructure components can be deployed or torn down without impacting other parts of the infrastructure. For example, the database resource contains data that should persist even though other application resources can be torn down, and the infrastructure components that support image upload are unrelated to the components responsible for card delivery hence both can be deployed and torn down separately.
 
 We use Terraform as the primary Infrastructure as Code (IaC) tool, Github for code storage and version control, and GitHub Actions for continuous integration and deployment. The majority of the application's resources are set up via Terraform to create a controlled version of our infrastructure and to aid in re-deployment in another region in the event of disaster recovery.
-
-The entire IaC and application code reside in twelve GitHub repositories.
 
 | Repository | AWS Stack | Others |
 | ---------- | --------- | --------- |
@@ -165,7 +163,7 @@ Security Groups are used throughout the infrastructure to protect resources from
 
 <img src="images/image-cloudfront-security-groups.png" width="250">
 
-AWS CloudFront distribution was set up with the ALB, S3 buckets, and API Gateway resources as the origin. The intention is to only allow access to these resources from AWS CloudFront. For example, S3 buckets should not be public and APIs should only called from CloudFront hostnames. CloudFront also serves as a Content Delivery Network to allow content to be cached at the edge so that end-users can experience faster access to our website content. 
+AWS CloudFront distribution was set up with the ALB, S3 buckets, and API Gateway resources as the origin. The intention was to only allow access to these resources from AWS CloudFront. For example, S3 buckets should be private and APIs should only called from CloudFront hostnames. CloudFront also serves as a Content Delivery Network to allow content to be cached at the edge so that end-users can experience faster access to our website content. 
 
 
 #### AWS WAF, Shield, and Captcha
@@ -194,9 +192,9 @@ Based on AWS Resilience Hub's assessment, our application and infrastructure sho
 | ---------- | --------- | --------- | --------- | --------- |
 | us-west-2a <br> us-west-2b | Target Tracking <br> CPUUtilization @ 80% <br> MemoryUtilization @ 60% | 2 | 4 | 8 | 
 
-Availability Zones (AZ) are physically separate data centers within a region. The ECS cluster is deployed across two AZs to achieve a fault-tolerant architecture because if one AZ experiences issues, such as hardware failures or network problems, the other AZs can continue running the ECS cluster without disruption. If one AZ becomes unhealthy or experiences high traffic, ECS will automatically redirect traffic to healthy instances in other AZs. 
+Availability Zones (AZ) are physically separate data centers within a region. The ECS cluster is deployed across two AZs to achieve a fault-tolerant architecture; in the event that one AZ experiences problems such as hardware or network failures, the other AZ can continue running the ECS cluster without disruption. Furthermore, if one AZ becomes unhealthy or experiences high traffic, ECS will automatically redirect traffic to healthy instances in other AZs. 
 
-Application auto-scaling is also enabled and both CPU and memory utilization are tracked to provision additional compute resources when the workload is high, thereby enhancing application responsiveness and availability.
+Application auto-scaling was enabled and both CPU and memory utilization are tracked to provision additional compute resources when the workload is high, thereby enhancing application responsiveness and availability.
 
 
 #### RDS & Replication
