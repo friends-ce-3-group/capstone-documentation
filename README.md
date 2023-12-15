@@ -234,7 +234,7 @@ Monitoring includes metrics, text logging, structured event logging, distributed
 | Data                    | Seamless integration with CloudWatch Logs | Data sources have to be manually connected |
 | Alerts & Notification   | Alarms are easily created | Notification channels have to be added and configured |
 | Metrics Management      | All metrics are read | Only filtered data is read and stored in a time-series database (TSDB) |
-| Dashboard               | Ease of use | More complex to use, but has better UI provides superior data visualisations compared to CloudWatch dashboards |
+| Dashboard               | Ease of use | More complex to use, but has better User Interface (UI) and provides superior data visualisations compared to CloudWatch dashboards |
 
 
 ## SRE Aspect 4: Alarms (Emails & Slack)
