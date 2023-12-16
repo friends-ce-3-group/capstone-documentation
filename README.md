@@ -16,7 +16,6 @@ This document is a report for a capstone project done as part of the NTU Cloud I
 - [Project Management](#project-management)
 - [Summary](#summary)
 - [Future Work](#future-work)
-- [Appendix](#Appendix)
 
 ## Company Profile - The GoodGreets Company
 
